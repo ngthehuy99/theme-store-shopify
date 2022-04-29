@@ -1,0 +1,133 @@
+ <div class="products grid wide_1320 ">  
+    <div class="collection-area pb-70">
+      <div class="collection-area-list">
+        <div class="row justify-center">
+          {%for block in section.blocks%}
+          <div class="col l-6 m-6">
+            {%if block.settings.collection_banner_img != blank%}
+            <div class="area__item">
+              <div class="area__item-img">
+                <img srcset="{%- if block.settings.collection_banner_img.width >= 165 -%}{{ block.settings.collection_banner_img | img_url: '165x' }} 165w,{%- endif -%}
+                       {%- if block.settings.collection_banner_img.width >= 330 -%}{{ block.settings.collection_banner_img | img_url: '330x' }} 330w,{%- endif -%}
+                       {%- if block.settings.collection_banner_img.width >= 535 -%}{{ block.settings.collection_banner_img | img_url: '535x' }} 535w,{%- endif -%}
+                       {%- if block.settings.collection_banner_img.width >= 750 -%}{{ block.settings.collection_banner_img | img_url: '750x' }} 750w,{%- endif -%}
+                       {%- if block.settings.collection_banner_img.width >= 1000 -%}{{ block.settings.collection_banner_img | img_url: '1000x' }} 1000w,{%- endif -%}
+                       {%- if block.settings.collection_banner_img.width >= 1500 -%}{{ block.settings.collection_banner_img | img_url: '1500x' }} 1500w,{%- endif -%}
+                       {%- if block.settings.collection_banner_img.width >= 3000 -%}{{ block.settings.collection_banner_img | img_url: '3000x' }} 3000w,{%- endif -%}
+                       {{ block.settings.collection_banner_img | img_url: 'master' }} {{ block.settings.collection_banner_img.width }}w"
+                     src="{{block.settings.collection_banner_img| img_url}}"
+                     >
+              </div>
+              <div class="content2 algin-center">
+                {%if block.settings.collection_banner_title1 != blank%}
+                <h3>
+                  {{block.settings.collection_banner_title1}}
+                  <span>{{block.settings.collection_banner_title-bold}}</span>
+                  {{block.settings.collection_banner_title2}}
+                </h3>
+                {%endif%}
+                
+                <a href="" class="shop__btn {%if block.settings.collection_banner_hidebtn%} d-none{%endif%}">
+                  <i class="{{ block.settings.collection_banner_btn-icon | escape }}"></i>
+                  {{ block.settings.collection_banner_btn | escape }}
+                </a>
+              </div>
+            </div>
+            {%endif%}
+          </div>
+          {%endfor%}
+          {%comment%}
+          <div class="col l-6 m-6">
+            <div class="area__item">
+              <div class="area__item-img">
+                <img src="
+                          {%- if section.settings.banner_collection2 != blank -%}
+                          {{section.settings.banner_collection2| img_url}}
+                          {%else%}
+                          https://vaxim-ng.envytheme.com/assets/img/collection/collection5.jpg
+                          {%- endif -%}"
+                     >
+              </div>
+              <div class="content2 algin-center">
+                <h3>
+                  SAVE UP
+                  <span>50%</span>
+                  OFF
+                </h3>
+                <a href="" class="shop__btn">
+                  <i class="fas fa-store"></i>
+                  SHOP NOW
+                </a>
+              </div>                      
+            </div>
+            <div class="contain__shape3">
+              <img src="https://vaxim-ng.envytheme.com/assets/img/shape/shape2.png">
+            </div>
+          </div>
+          {%endcomment%}
+        </div>
+      </div>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Custom Banner Collection",
+    "settings": [
+	
+    ],
+    "blocks": [
+      {
+        "type": "custom_collection_banner",
+        "name": "Collection banner",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "collection_banner_img",
+            "label": "Collection banner image"
+          },   
+          {
+              "type":"text",
+              "id": "collection_banner_title1",
+              "label":"Collection banner title top"
+          },
+		{
+              "type":"text",
+              "id": "collection_banner_title-bold",
+              "label":"Title hightlight"
+          },
+		{
+			"type":"text",
+            "id": "collection_banner_title2",
+            "label":"Collection banner title bottom"
+		},
+		{
+			"type":"checkbox",
+            "id": "collection_banner_hidebtn",
+            "label":"Hide button"
+		},
+		{
+			"type":"text",
+            "id": "collection_banner_btn",
+            "label":"Button text",
+			"default":"SHOP NOW"
+		},
+		{
+			"type":"text",
+            "id": "collection_banner_btn-icon",
+            "label":"Button icon",
+			"default":"fas fa-store"
+		}
+      	]		
+      }  
+	
+	]
+
+
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

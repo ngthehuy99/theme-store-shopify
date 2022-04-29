@@ -1,0 +1,110 @@
+
+<div class="header-area">
+  {%- for block in section.blocks -%}
+  	{%- case block.type -%}
+  		{%- when 'announcement' -%}
+        <div class="header__new">
+            <div class="container-fluid">
+                <div class="row align-center flex-direction">
+                    <div class="col l-6 m-6 c-12">
+                      {%- if block.settings.text != blank -%}
+                        	<p>{{ block.settings.text | escape }}</p>
+                      	{%-else-%}
+                      		<p>Free Delivery Over $35 to Most of USA*</p>
+                      {%- endif -%}
+                    </div>
+                    <div class="col l-6 m-6 c-12">
+                        <div class="header__option">
+                          <div class="d-flex justify-end align-center">
+                            {%if section.settings.show_social%}
+                            <ul class="social-link">
+                              {% if settings.social_facebook_link != blank %}
+                              <li><a href="{{ settings.social_facebook_link | escape }}" class="facebook" title="Facebook" target="_blank" rel="nofollow"><i class="fab fa-facebook-f"></i></a></li>
+                              {% endif %}
+                              {% if settings.social_twitter_link != blank %}
+                              <li><a href="{{ settings.social_twitter_link | escape }}" class="twitter" title="Twitter" target="_blank" rel="nofollow"><i class="fab fa-twitter"></i></a></li>
+                              {% endif %}
+                              {% if settings.social_instagram_link != blank %}
+                              <li><a href="{{ settings.social_instagram_link | escape }}" class="instagram" title="Instagram" target="_blank" rel="nofollow"><i class="fab fa-instagram"></i></a></li>
+                              {% endif %}
+                              {% if settings.social_pinterest_link != blank %}
+                              <li><a href="{{ settings.social_pinterest_link | escape }}" class="pinterest" title="Pinterest" target="_blank" rel="nofollow"><i class="fab fa-pinterest-p"></i></a></li>
+                              {% endif %}
+                              {% if settings.social_behance_link != blank %}
+                              <li><a href="{{ settings.social_behance_link | escape }}" class="behance" title="Behance" target="_blank" rel="nofollow"><i class="fab fa-behance"></i></a></li>
+                              {% endif %}
+                              {% if settings.social_tumblr_link != blank %}
+                              <li><a href="{{ settings.social_tumblr_link | escape }}" class="tumblr" title="Tumblr" target="_blank" rel="nofollow"><i class="fab fa-tumblr"></i></a></li>
+                              {% endif %}
+                              {% if settings.social_snapchat_link != blank %}
+                              <li><a href="{{ settings.social_snapchat_link | escape }}" class="snapchat" title="Snapchat" target="_blank" rel="nofollow"><i class="fab fa-snapchat"></i></a></li>
+                              {% endif %}
+                              {% if settings.social_youtube_link != blank %}
+                              <li><a href="{{ settings.social_youtube_link | escape }}" class="youtube" title="Youtube" target="_blank" rel="nofollow"><i class="fab fa-youtube"></i></a></li>
+                              {% endif %}
+                              {% if settings.social_vimeo_link != blank %}
+                              <li><a href="{{ settings.social_vimeo_link | escape }}" class="vimeo" title="Vimeo" target="_blank" rel="nofollow"><i class="fab fa-vimeo"></i></a></li>
+                              {% endif %}
+                            </ul>
+                            {%endif%}
+
+                            <div class="language-option">
+                              <select class="form-select">
+                                <option>English</option>
+                                <option>Spanish</option>
+                                <option>Chinese</option>
+                                <option>Russian</option>
+                                <option>Turkish</option>
+                              </select>
+							</div>
+                            <div class="currency-option">
+                              <select class="form-select">
+                                <option>$USD</option>
+                                <option>€EUR</option>
+                                <option>$FJD</option>
+                                <option>£FKP</option>
+                                <option>£GBP</option>
+                              </select>
+							</div>
+                        </div>
+                     </div>
+                   </div>
+
+                 </div>
+               </div>    
+            </div>
+      {%- endcase -%}
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  	"name": "t:sections.announcement-bar.name",
+	"settings": [
+		
+      {
+        "type": "checkbox",
+        "id": "show_social",
+        "default": true,
+        "label": "t:sections.footer.settings.show_social.label"
+	}	
+	],
+  	"blocks": [
+    {
+      "type": "announcement",
+      "name": "t:sections.announcement-bar.blocks.announcement.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
+        }
+      ]
+    }
+  ]
+ }
+{% endschema %}
+
+
+
+

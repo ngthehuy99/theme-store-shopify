@@ -1,0 +1,110 @@
+<div class="facility__area pb-100">
+  <div class="grid wide_1320 pd-12">
+    <div class="facility">
+      <div class="row">
+        {%for block in section.blocks%}
+        <div class="facility-item col l-3 m-6 c-12">
+          {%if block.settings.facility_img != blank%}
+          <div class="facility-img {%if block.settings.checkbox_img%}d-none {%endif%}">
+            <img 
+                 srcset="{%- if block.settings.facility_img.width >= 165 -%}{{ block.settings.facility_img | img_url: '165x' }} 165w,{%- endif -%}
+                         {%- if block.settings.facility_img.width >= 330 -%}{{ block.settings.facility_img | img_url: '330x' }} 330w,{%- endif -%}
+                         {%- if block.settings.facility_img.width >= 535 -%}{{ block.settings.facility_img | img_url: '535x' }} 535w,{%- endif -%}
+                         {%- if block.settings.facility_img.width >= 750 -%}{{ block.settings.facility_img | img_url: '750x' }} 750w,{%- endif -%}
+                         {%- if block.settings.facility_img.width >= 1000 -%}{{ block.settings.facility_img | img_url: '1000x' }} 1000w,{%- endif -%}
+                         {%- if block.settings.facility_img.width >= 1500 -%}{{ block.settings.facility_img | img_url: '1500x' }} 1500w,{%- endif -%}
+                         {%- if block.settings.facility_img.width >= 3000 -%}{{ block.settings.facility_img | img_url: '3000x' }} 3000w,{%- endif -%}
+                         {{ block.settings.facility_img | img_url: 'master' }} {{ block.settings.facility_img.width }}w"
+                 src"{{block.settings.facility_img}}">
+          </div>
+          {%else%}
+          <div class="facility-icon {%if block.settings.checkbox_icon%}d-none {%endif%}">
+            <i class="{{block.settings.facility_icon}}"></i>  
+          </div>
+          {%endif%}
+          <h3>{{block.settings.facility_title}}</h3>
+          <span>{{block.settings.facility_sub}}</span>
+        </div>
+        {%endfor%}
+        {%comment%}
+        <div class="facility-item col l-3 m-6 c-12">
+          <div class="facility-icon">
+            <i class="far fa-credit-card"></i>  
+          </div>
+          <h3>{{section.settings.facility_title2}}</h3>
+          <span>{{section.settings.facility_sub2}}</span>
+        </div>
+        <div class="facility-item col l-3 m-6 c-12">
+          <div class="facility-icon">
+            <i class="fas fa-gift"></i>  
+          </div>
+          <h3>{{section.settings.facility_title3}}</h3>
+          <span>{{section.settings.facility_sub3}}</span>
+        </div>
+        <div class="facility-item col l-3 m-6 c-12">
+          <div class="facility-icon">
+            <i class="fas fa-headphones-alt"></i>  
+          </div>
+          <h3>{{section.settings.facility_title4}}</h3>
+          <span>{{section.settings.facility_sub4}}</span>
+        </div>
+        {%endcomment%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Custom Facility",
+    "settings": [
+	
+    ],
+	"blocks": [
+      {	
+          "type":"custom_facility",
+          "name": "Facility",
+          "settings": [
+              {
+                  "type": "text",
+                  "id": "facility_icon",
+                  "label": "Icon"
+              },
+              {
+                  "type": "checkbox",
+                  "id": "checkbox_icon",
+                  "label": "Hide Icon",
+                  "default": false
+              },
+              {
+                  "type": "image_picker",
+                  "id": "facility_img",
+                  "label": "Image"
+              },
+              {
+                  "type": "checkbox",
+                  "id": "checkbox_img",
+                  "label": "Hide Image"
+              },
+              {
+                  "type": "text",
+                  "id": "facility_title",
+                  "label": "Title"
+              },
+              {
+                  "type": "text",
+                  "id": "facility_sub",
+                  "label": "Description"
+              }
+          ]
+      }	
+	]
+
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

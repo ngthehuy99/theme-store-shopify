@@ -1,0 +1,640 @@
+{{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
+
+{%- if section.settings.adapt_height_first_image and section.settings.image != blank -%}
+  {%- style -%}
+  @media screen and (max-width: 749px) {
+    #Banner-{{ section.id }}::before,
+    #Banner-{{ section.id }} .banner__media::before,
+    #Banner-{{ section.id }}:not(.banner--mobile-bottom) .banner__content::before {
+      padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
+      content: '';
+      display: block;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    #Banner-{{ section.id }}::before,
+    #Banner-{{ section.id }} .banner__media::before {
+      padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
+      content: '';
+      display: block;
+    }
+  }
+  {%- endstyle -%}
+{%- endif -%}
+
+{%- style -%}
+  .main-banner::after {
+    opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
+  }
+{%- endstyle -%}
+
+
+
+
+  <div class="banner__content banner__content--{{ section.settings.desktop_text_box_position }} page-width">
+    
+    <div class="main-banner" style="background-image:url({%- if section.settings.background_image != blank -%}{{section.settings.background_image| img_url: '1500x'}}{%else%}https://vaxim-ng.envytheme.com/assets/img/banner/banner-bg3.jpg {%endif%})">
+         
+      <div class="contain__shape1">
+        <img src="
+                  {%- if section.settings.background_shape1 != blank -%}
+        			{{section.settings.background_shape1| img_url}}
+                  {%else%}
+                  	https://vaxim-ng.envytheme.com/assets/img/shape/shape4.png
+                  {%- endif -%}"
+        > 
+      </div>
+      <div class="contain__shape2">
+        <img src="
+                  {%- if section.settings.background_shape2 != blank -%}
+        			{{section.settings.background_shape2| img_url}}
+                  {%else%}
+                  	https://vaxim-ng.envytheme.com/assets/img/shape/shape1.png
+                  {%- endif -%}"
+        >        
+      </div>
+      <div class="container-fluid">  
+        <div class="row align-center">
+          <div class="banner col l-5 m-12 c-12">            
+            <div class="banner__item">
+              <div class="content">
+                {%-for block in section.blocks -%}
+                {%- case block.type-%}
+                {%- when 'text'-%}
+                <span class="sub__title">{{ block.settings.text_sub | escape }}</span>
+                {%- when 'heading' -%}
+                <h1>{{ block.settings.heading | escape }}
+                  <span class="sub__discount">{{ block.settings.sub_discount | escape}}</span>
+                </h1>
+                
+                {% when 'buttons' %}
+                <a href="" class="shop__btn">
+                  <i class="fas fa-store"></i>
+                  {{ block.settings.button_label_1 | escape }}
+                </a>
+                {%- endcase -%}
+                {%- endfor-%}
+              </div>        
+            </div>
+          </div>
+          <div class="product__img col l-7 m-12 c-12">
+            <div class="products__list">
+              <div class="row justify-center">
+                
+                <div class="col l-4 m-4 col-6">
+                  <div class="product__img-item">
+                    <img src="
+                              {%- if section.settings.product_banner1 != blank -%}
+                              {{section.settings.product_banner1| img_url}}
+                              {%else%}
+                              https://vaxim-ng.envytheme.com/assets/img/banner/woman1.png
+                              {%- endif -%}"
+                         >
+                    <div class="collection__sub">
+                      <div class="collection__sub-item">
+                        <div class="row margin-0">
+                          <div class="col l-4 m-4 p-0">
+                            <div class="collection__sub-item--img">
+                              <img src="
+                                        {%- if section.settings.sub_image1 != blank -%}
+                                        {{section.settings.sub_image1| img_url}}
+                                        {%else%}
+                                        https://vaxim-ng.envytheme.com/assets/img/products/products22.jpg
+                                        {%- endif -%}"
+                                   >
+                              <a href="" class="link-btn"></a>
+                            </div>
+                          </div>
+                          <div class="col l-8 m-8 p-0">
+                            <div class="collection__sub-item--infor">
+                              <h3><a href="">{{section.settings.sub_image1_title}}</a></h3>
+                              <span class="sub-item-price">${{section.settings.sub_image1_price}}</span>
+                              <a href="" class="add-cart">
+                                Add to cart
+                                <i class="fas fa-cart-plus"></i>
+                              </a>
+                            </div>
+                          </div>          
+
+                        </div>
+                      </div>
+                      <span class="dot"></span>
+                    </div>
+
+                    <div class="collection__sub style2">
+                      <div class="collection__sub-item">
+                        <div class="row margin-0">
+                          <div class="col l-4 m-4 p-0">
+                            <div class="collection__sub-item--img bg1">
+                              <img src="
+                                        {%- if section.settings.sub_image2 != blank -%}
+                                        {{section.settings.sub_image2| img_url}}
+                                        {%else%}
+                                        https://vaxim-ng.envytheme.com/assets/img/products/products22.jpg
+                                        {%- endif -%}"
+                                   >
+                              <a href="" class="link-btn"></a>
+                            </div>
+                          </div>
+                          <div class="col l-8 m-8 p-0">
+                            <div class="collection__sub-item--infor">
+                              <h3><a href="">{{section.settings.sub_image2_title}}</a></h3>
+                              <span class="sub-item-price">${{section.settings.sub_image2_price}}</span>
+                              <a href="" class="add-cart">
+                                Add to cart
+                                <i class="fas fa-cart-plus"></i>
+                              </a>
+                            </div>
+                          </div>          
+
+                        </div>
+                      </div>
+                      <span class="dot"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col l-4 m-4 col-6">
+                  <div class="product__img-item">
+                    <img src="
+                              {%- if section.settings.product_banner2 != blank -%}
+                              {{section.settings.product_banner2| img_url}}
+                              {%else%}
+                              https://vaxim-ng.envytheme.com/assets/img/banner/woman2.png
+                              {%- endif -%}"
+                         >
+                    <div class="collection__sub style3">
+                      <div class="collection__sub-item">
+                        <div class="row margin-0">
+                          <div class="col l-4 m-4 p-0">
+                            <div class="collection__sub-item--img bg1">
+                              <img src="
+                                        {%- if section.settings.sub2_image1 != blank -%}
+                                        {{section.settings.sub2_image1| img_url}}
+                                        {%else%}
+                                        https://vaxim-ng.envytheme.com/assets/img/products/products22.jpg
+                                        {%- endif -%}"
+                                   >
+                              <a href="" class="link-btn"></a>
+                            </div>
+                          </div>
+                          <div class="col l-8 m-8 p-0">
+                            <div class="collection__sub-item--infor">
+                              <h3><a href="">{{section.settings.sub2_image2_title}}</a></h3>
+                              <span class="sub-item-price">${{section.settings.sub2_image2_price}}</span>
+                              <a href="" class="add-cart">
+                                Add to cart
+                                <i class="fas fa-cart-plus"></i>
+                              </a>
+                            </div>
+                          </div>          
+
+                        </div>
+                      </div>
+                      <span class="dot"></span>
+                    </div>
+
+                    <div class="collection__sub style4">
+                      <div class="collection__sub-item">
+                        <div class="row margin-0">
+                          <div class="col l-4 m-4 p-0">
+                            <div class="collection__sub-item--img bg1">
+                              <img src="
+                                        {%- if section.settings.sub2_image2 != blank -%}
+                                        {{section.settings.sub2_image2| img_url}}
+                                        {%else%}
+                                        https://vaxim-ng.envytheme.com/assets/img/products/products22.jpg
+                                        {%- endif -%}"
+                                   >
+                              <a href="" class="link-btn"></a>
+                            </div>
+                          </div>
+                          <div class="col l-8 m-8 p-0">
+                            <div class="collection__sub-item--infor">
+                              <h3><a href="">{{section.settings.sub2_image2_title}}</a></h3>
+                              <span class="sub-item-price">${{section.settings.sub2_image2_price}}</span>
+                              <a href="" class="add-cart">
+                                Add to cart
+                                <i class="fas fa-cart-plus"></i>
+                              </a>
+                            </div>
+                          </div>          
+
+                        </div>
+                      </div>
+                      <span class="dot"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col l-4 m-4 col-6">
+                  <div class="product__img-item">
+                    <img src="
+                              {%- if section.settings.product_banner3 != blank -%}
+                              {{section.settings.product_banner3| img_url}}
+                              {%else%}
+                              https://vaxim-ng.envytheme.com/assets/img/banner/woman3.png
+                              {%- endif -%}"
+                         >
+                    <div class="collection__sub style5">
+                      <div class="collection__sub-item">
+                        <div class="row margin-0">
+                          <div class="col l-4 m-4 p-0">
+                            <div class="collection__sub-item--img bg1">
+                              <img src="
+                                        {%- if section.settings.sub3_image1 != blank -%}
+                                        {{section.settings.sub3_image1| img_url}}
+                                        {%else%}
+                                        https://vaxim-ng.envytheme.com/assets/img/products/products22.jpg
+                                        {%- endif -%}"
+                                   >
+                              <a href="" class="link-btn"></a>
+                            </div>
+                          </div>
+                          <div class="col l-8 m-8 p-0">
+                            <div class="collection__sub-item--infor">
+                              <h3><a href="">{{section.settings.sub3_image2_title}}</a></h3>
+                              <span class="sub-item-price">${{section.settings.sub3_image2_price}}</span>
+                              <a href="" class="add-cart">
+                                Add to cart
+                                <i class="fas fa-cart-plus"></i>
+                              </a>
+                            </div>
+                          </div>          
+
+                        </div>
+                      </div>
+                      <span class="dot"></span>
+                    </div>
+
+                    <div class="collection__sub style6">
+                      <div class="collection__sub-item">
+                        <div class="row margin-0">
+                          <div class="col l-4 m-4 p-0">
+                            <div class="collection__sub-item--img bg1">
+                              <img src="
+                                        {%- if section.settings.sub3_image2 != blank -%}
+                                        {{section.settings.sub3_image2| img_url}}
+                                        {%else%}
+                                        https://vaxim-ng.envytheme.com/assets/img/products/products22.jpg
+                                        {%- endif -%}"
+                                   >
+                              <a href="" class="link-btn"></a>
+                            </div>
+                          </div>
+                          <div class="col l-8 m-8 p-0">
+                            <div class="collection__sub-item--infor">
+                              <h3><a href="">{{section.settings.sub3_image2_title}}</a></h3>
+                              <span class="sub-item-price">${{section.settings.sub3_image2_price}}</span>
+                              <a href="" class="add-cart">
+                                Add to cart
+                                <i class="fas fa-cart-plus"></i>
+                              </a>
+                            </div>
+                          </div>          
+
+                        </div>
+                      </div>
+                      <span class="dot"></span>
+                    </div>
+
+                    <div class="collection__sub style7">
+                      <div class="collection__sub-item">
+                        <div class="row margin-0">
+                          <div class="col l-4 m-4 p-0">
+                            <div class="collection__sub-item--img bg1">
+                              <img src="
+                                        {%- if section.settings.sub3_image3 != blank -%}
+                                        {{section.settings.sub3_image3| img_url}}
+                                        {%else%}
+                                        https://vaxim-ng.envytheme.com/assets/img/products/products22.jpg
+                                        {%- endif -%}"
+                                   >
+                              <a href="" class="link-btn"></a>
+                            </div>
+                          </div>
+                          <div class="col l-8 m-8 p-0">
+                            <div class="collection__sub-item--infor">
+                              <h3><a href="">{{section.settings.sub3_image3_title}}</a></h3>
+                              <span class="sub-item-price">${{section.settings.sub3_image3_price}}</span>
+                              <a href="" class="add-cart">
+                                Add to cart
+                                <i class="fas fa-cart-plus"></i>
+                              </a>
+                            </div>
+                          </div>          
+
+                        </div>
+                      </div>
+                      <span class="dot"></span>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>                        
+            </div>                      
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+    
+   
+  </div>
+
+
+{% schema %}
+{
+  "name": "t:sections.image-banner.name",
+  "tag": "section",
+  "class": "spaced-section spaced-section--full-width",
+  "settings": [
+	{
+		"type":"image_picker",
+		"id":"background_image",
+		"label":"Main background"
+	},
+  	{
+		"type":"image_picker",
+		"id":"background_shape1",
+		"label":"Background shape top"
+	},
+  	{
+		"type":"image_picker",
+		"id":"background_shape2",
+		"label":"Background shape bottom"
+	},
+    {
+      "type": "image_picker",
+      "id": "product_banner1",
+      "label": "Product banner 1"
+    },   
+    {
+        "type":"text",
+        "id": "sub_image1_title",
+        "label":"Title product 1",
+        "default":"Woman summer t-shirt"
+    },
+    {
+        "type":"text",
+        "id": "sub_image1_price",
+        "label":"Price product 1",
+        "default":"75.00"
+    },
+	{
+        "type":"text",
+        "id": "sub_image2_title",
+        "label":"Price product 2",
+        "default":"Woman summer t-shirt"
+    },
+    {
+        "type":"text",
+        "id": "sub_image2_price",
+        "label":"Price product 2",
+        "default":"75.00"
+    },
+	{
+      "type": "image_picker",
+      "id": "product_banner2",
+      "label": "Product banner 2"
+    },
+	{
+        "type":"text",
+        "id": "sub2_image1_title",
+        "label":"Title product 3",
+        "default":"Woman summer t-shirt"
+    },
+    {
+        "type":"text",
+        "id": "sub2_image1_price",
+        "label":"Price product 3",
+        "default":"75.00"
+    },
+	{
+        "type":"text",
+        "id": "sub2_image2_title",
+        "label":"Price product 4",
+        "default":"Woman summer t-shirt"
+    },
+    {
+        "type":"text",
+        "id": "sub2_image2_price",
+        "label":"Price product 4",
+        "default":"75.00"
+    },
+	{
+      "type": "image_picker",
+      "id": "product_banner3",
+      "label": "Product banner 3"
+    },
+	{
+        "type":"text",
+        "id": "sub3_image1_title",
+        "label":"Title product 5",
+        "default":"Woman summer t-shirt"
+    },
+    {
+        "type":"text",
+        "id": "sub3_image1_price",
+        "label":"Price product 5",
+        "default":"75.00"
+    },
+	{
+        "type":"text",
+        "id": "sub3_image2_title",
+        "label":"Price product 6",
+        "default":"Woman summer t-shirt"
+    },
+    {
+        "type":"text",
+        "id": "sub3_image2_price",
+        "label":"Price product 6",
+        "default":"75.00"
+    },
+	{
+        "type":"text",
+        "id": "sub3_image3_title",
+        "label":"Price product 7",
+        "default":"Woman summer t-shirt"
+    },
+    {
+        "type":"text",
+        "id": "sub3_image3_price",
+        "label":"Price product 7",
+        "default":"75.00"
+    },
+    {
+      "type": "select",
+      "id": "image_height",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:sections.image-banner.settings.image_height.options__1.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.image-banner.settings.image_height.options__2.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.image-banner.settings.image_height.options__3.label"
+        }
+      ],
+      "default": "medium",
+      "label": "t:sections.image-banner.settings.image_height.label",
+      "info": "t:sections.image-banner.settings.image_height.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "adapt_height_first_image",
+      "default": false,
+      "label": "t:sections.image-banner.settings.adapt_height_first_image.label",
+      "info": "t:sections.image-banner.settings.adapt_height_first_image.info"
+    },
+    {
+      "type": "select",
+      "id": "desktop_text_box_position",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "t:sections.image-banner.settings.desktop_text_box_position.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.image-banner.settings.desktop_text_box_position.options__2.label"
+        },
+        {
+          "value": "flex-end",
+          "label": "t:sections.image-banner.settings.desktop_text_box_position.options__3.label"
+        }
+      ],
+      "default": "center",
+      "label": "t:sections.image-banner.settings.desktop_text_box_position.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_text_box",
+      "default": true,
+      "label": "t:sections.image-banner.settings.show_text_box.label"
+    },
+    {
+      "type": "range",
+      "id": "image_overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "%",
+      "label": "t:sections.image-banner.settings.image_overlay_opacity.label",
+      "default": 0
+    },    
+    {
+      "type": "header",
+      "content": "t:sections.image-banner.settings.header.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "stack_images_on_mobile",
+      "default": true,
+      "label": "t:sections.image-banner.settings.stack_images_on_mobile.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_text_below",
+      "default": true,
+      "label": "t:sections.image-banner.settings.show_text_below.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "t:sections.image-banner.blocks.heading.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "WOMAN COLLECTION",
+          "label": "t:sections.image-banner.blocks.heading.settings.heading.label"
+        },
+		{
+          "type": "text",
+          "id": "sub_discount",
+          "default": "-50%",
+          "label": "Discount"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "medium",
+              "label": "t:sections.image-banner.blocks.heading.settings.heading_size.options__1.label"
+            },
+            {
+              "value": "large",
+              "label": "t:sections.image-banner.blocks.heading.settings.heading_size.options__2.label"
+            }
+          ],
+          "default": "medium",
+          "label": "t:sections.image-banner.blocks.heading.settings.heading_size.label"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.image-banner.blocks.text.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text_sub",
+          "default": "New Arrival!",
+          "label": "t:sections.image-banner.blocks.text.settings.text.label"
+        }
+      ]
+    },
+    {
+      "type": "buttons",
+      "name": "t:sections.image-banner.blocks.buttons.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label_1",
+          "default": "Button label",
+          "label": "t:sections.image-banner.blocks.buttons.settings.button_label_1.label",
+          "info": "t:sections.image-banner.blocks.buttons.settings.button_label_1.info"
+        },
+        {
+          "type": "url",
+          "id": "button_link_1",
+          "label": "t:sections.image-banner.blocks.buttons.settings.button_link_1.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_style_secondary_1",
+          "default": false,
+          "label": "t:sections.image-banner.blocks.buttons.settings.button_style_secondary_1.label"
+        }
+      ]
+    }
+  ],
+"presets": [
+    {
+      "name": "t:sections.image-banner.presets.name",
+      "blocks": [
+        {
+            "type": "heading"
+        },
+        {
+            "type": "text"
+        },
+        {
+         	"type": "buttons"
+        }
+        
+      ]
+    }
+  ]
+}
+{% endschema %}

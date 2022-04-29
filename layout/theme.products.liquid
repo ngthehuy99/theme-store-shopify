@@ -1,0 +1,934 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="">
+    <!--     <link rel="canonical" href="{{ canonical_url }}"> -->
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+ 
+<!--     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <!--     <link rel="stylesheet" href="{{owl.carousel.min.css }}">
+<link rel="stylesheet" href="{{owl.theme.default.min.css}}"> -->
+    {{ 'owl.theme.default.min.css' | asset_url | stylesheet_tag }}
+    {{ 'owl.carousel.min.css ' | asset_url | stylesheet_tag }}
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+    {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {% render 'meta-tags' %}
+	 
+    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+    <!--     <script src="{{'https://code.jquery.com/jquery-3.6.0.min.js' | asset_url}}"></script> -->
+    <script src="{{'owl.carousel.min.js' | asset_url}}"></script>
+    {{ content_for_header }}
+
+    {%- liquid
+      assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
+      assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
+      assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+    %}
+
+    {% style %}
+
+
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    }
+    html {
+    font-family: 'Jost', sans-serif;
+    line-height: 1.4rem;
+    box-sizing: border-box;
+    }
+
+    @media screen and (min-width: 750px) {
+    body {
+    font-size: 16px;
+    }
+    }
+    {% endstyle %}
+
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'grid.css' | asset_url | stylesheet_tag }}
+    {{ 'style.css' | asset_url | stylesheet_tag }}
+    {{ 'font.css' | asset_url | stylesheet_tag }}
+    {{ 'icon.css' | asset_url | stylesheet_tag }}
+	{{ 'responsive.css' | asset_url | stylesheet_tag }}
+    {{ 'products.css' | asset_url | stylesheet_tag }}
+
+
+
+
+
+  </head>
+
+  <body>
+<div class="globo-content">
+    <!--   Header   -->
+    <div class="header-area">
+      <div class="header__new">
+        <div class="container-fluid">
+          <div class="row align-center flex-direction">
+            <div class="col l-6 m-6 c-12">
+              <p>Free Delivery Over $35 to Most of USA*</p>
+            </div>
+            <div class="col l-6 m-6 c-12">
+              <div class="header__option">
+                <div class="d-flex justify-end align-center">
+                  <ul class="social__nav">
+                    <li class="social-item"><a href=""><i class="icon fab fa-facebook-f"></i></a></li>
+                    <li class="social-item"><a href=""><i class="icon fab fa-twitter"></i></a></li>
+                    <li class="social-item"><a href=""><i class="icon fab fa-instagram"></i></a></li>
+                    <li class="social-item"><a href=""><i class="icon fab fa-pinterest-p"></i></a></li>
+                  </ul>
+                  <div class="language-option">
+                    <select class="form-select">
+                      <option>English</option>
+                      <option>Spanish</option>
+                      <option>Chinese</option>
+                      <option>Russian</option>
+                      <option>Turkish</option>
+                    </select>
+                  </div>
+                  <div class="currency-option">
+                    <select class="form-select">
+                      <option>$USD</option>
+                      <option>€EUR</option>
+                      <option>$FJD</option>
+                      <option>£FKP</option>
+                      <option>£GBP</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>    
+      </div>
+      <!--    Navbar    -->
+        <div class="navbar-area" id="myheader">
+          <div class="container-fluid">
+            <div class="navbar align-center">
+              <a href="" class="navbar-brand"><img src="https://vaxim-ng.envytheme.com/assets/img/logo.png" alt="logo"></img></a>
+            <!--                 <div class="header__title" ></div> -->
+            <!--       Navbar-btn      	 -->
+            <button onclick="dropMenu()" type="button" class="navbar-btn" id="navbar-btn">
+              <span class="burger-menu">
+                <span class="top-bar"></span>
+                <span class="middle-bar"></span>
+                <span class="bottom-bar"></span>
+              </span>
+            </button>
+            <div class="navbar-support" id="Menu">
+              <ul class="nav__bar">
+                <li class="nav__item" id="home">
+                  <a href="" class="sub-menu">HOME</a>
+                  <ul class="sub">
+                    <li class="sub-item"><a href="">Home Demo - One</a></li>
+                    <li class="sub-item"><a href="">Home Demo - Two</a></li>
+                    <li class="sub-item"><a href="">Home Demo - Three</a></li>
+                  </ul>
+                </li>
+                <li class="nav__item megamenu" id="shop">
+                  <a href="" class="sub-menu">SHOP</a>
+                  <ul class="drop-sub">
+                    <li class="nav__item">
+                      <div class="row">
+                        <div class="col l-6 m-12 c-12">
+                          <h6 class="nav__item-title">SHOP</h6>
+                          <ul class="megamenu-sub">
+                            <li class="sub-item"><a href="">Full Width Style 01</a></li>
+                            <li class="sub-item"><a href="">Full Width Style 02</a></li>
+                            <li class="sub-item"><a href="">Shop Left Sidebar Style 01</a></li>
+                            <li class="sub-item"><a href="">Shop Left Sidebar Style 02</a></li>
+                            <li class="sub-item"><a href="">Shop Right Sidebar Style 01</a></li>
+                            <li class="sub-item"><a href="">Shop Right Sidebar Style 02</a></li>    
+                          </ul>
+                        </div>
+                        <div class="col l-6 m-12 c-12">
+                          <h6 class="nav__item-title">PRODUCT DETAILS</h6>
+                          <ul class="megamenu-sub">
+                            <li class="sub-item"><a href="">Product Details</a></li>
+                            <li class="sub-item"><a href="">Cart</a></li>
+                            <li class="sub-item"><a href="">Checkout</a></li>
+                            <li class="sub-item"><a href="">Wishlist</a></li>
+                            <li class="sub-item"><a href="">My Account</a></li>
+                            <li class="sub-item"><a href="">Dynamic Shop Page</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>                      
+                </li>
+                <li class="nav__item" id="page">
+                  <a href="" class="sub-menu">PAGES</a>
+                  <ul class="sub">
+                    <li class="sub-item"><a href="">About Us</a></li>
+                    <li class="sub-item"><a href="">Feedback</a></li>
+                    <li class="sub-item" id="gallery">
+                      <a href="">Gallery
+                        <i class="relativ fas fa-chevron-right "></i>
+                      </a>
+                      <ul class="gallery">
+                        <li class="sub-item"><a href="">Gallery Two Collumn</a></li>
+                        <li class="sub-item"><a href="">Gallery Three Collumn</a></li>
+                        <li class="sub-item"><a href="">Gallery Four Collumn</a></li>
+                        <li class="sub-item"><a href="">Gallery Filter</a></li>
+                      </ul>
+                    </li>
+                    <li class="sub-item"><a href="">FAQ</a></li>
+                    <li class="sub-item"><a href="">Delivery Return Policy</a></li>
+                    <li class="sub-item"><a href="">Shipping Policy</a></li>
+                    <li class="sub-item"><a href="">Privacy Policy</a></li>
+                    <li class="sub-item"><a href="">Terms & Conditions</a></li>
+                    <li class="sub-item"><a href="">404 Error Page</a></li>
+                    <li class="sub-item"><a href="">Comming Soon</a></li>
+                  </ul>
+                </li>
+                <li class="nav__item megamenu">
+                  <a href="" class="sub-menu">MEN</a>
+                  <ul class="drop-sub">
+                    <li class="nav__item">
+                      <div class="row">
+                        <div class="col l-6 m-12 c-12">
+                          <h6 class="nav__item-title">SHOP BY</h6>
+                          <ul class="megamenu-sub">
+                            <li class="sub-item"><a href="">New in</a></li>
+                            <li class="sub-item"><a href="">Hot Sale</a></li>
+                            <li class="sub-item"><a href="">Clothing</a></li>
+                            <li class="sub-item"><a href="">Shoe</a></li>
+                            <li class="sub-item"><a href="">Bag</a></li>   
+                          </ul>
+                        </div>
+                        <div class="col l-6 m-12 c-12">
+                          <h6 class="nav__item-title">COLLECTIONS</h6>
+                          <ul class="megamenu-sub">
+                            <li class="sub-item"><a href="">Committed</a></li>
+                            <li class="sub-item"><a href="">2021 beachwear</a></li>
+                            <li class="sub-item"><a href="">Office looks</a></li>
+                            <li class="sub-item"><a href="">Leather and more</a></li>
+                            <li class="sub-item"><a href="">Denim</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+                  </ul> 
+                </li>
+                <li class="nav__item megamenu">
+                  <a href="" class="sub-menu">WOMEN</a>
+                  <ul class="drop-sub">
+                    <li class="nav__item">
+                      <div class="row">
+                        <div class="col l-6 m-12 c-12">
+                          <h6 class="nav__item-title">SHOP BY</h6>
+                          <ul class="megamenu-sub">
+                            <li class="sub-item"><a href="">New in</a></li>
+                            <li class="sub-item"><a href="">Hot Sale</a></li>
+                            <li class="sub-item"><a href="">Clothing</a></li>
+                            <li class="sub-item"><a href="">Shoe</a></li>
+                            <li class="sub-item"><a href="">Bag</a></li>   
+                          </ul>
+                        </div>
+                        <div class="col l-6 m-12 c-12">
+                          <h6 class="nav__item-title">COLLECTIONS</h6>
+                          <ul class="megamenu-sub">
+                            <li class="sub-item"><a href="">Committed</a></li>
+                            <li class="sub-item"><a href="">2021 beachwear</a></li>
+                            <li class="sub-item"><a href="">Office looks</a></li>
+                            <li class="sub-item"><a href="">Leather and more</a></li>
+                            <li class="sub-item"><a href="">Denim</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+                  </ul> 
+                </li>
+                <li class="nav__item" id="blog">
+                  <a href="" class="sub-menu">BLOG</a>
+                  <ul class="sub">
+                    <li class="sub-item"><a href="">Blog Grid</a></li>
+                    <li class="sub-item"><a href="">Blog Left Sidebar</a></li>
+                    <li class="sub-item"><a href="">Blog Right Sidebar</a></li>
+                    <li class="sub-item"><a href="">Blog Details</a></li>
+                  </ul>
+                </li>
+                <li class="nav__item nav__item-last"><a href="">CONTACT</a></li>
+              </ul>
+              <div class="other-option">
+                <div class="search__box">
+                  <input type="text" placeholder="Search for products" class="search-input">
+                  <button type="submit" class="search-btn">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+                <div class="option__item">
+                  <a href="" id="icon" class="user-account">
+                    <i class="icon2  far fa-user"></i>
+                  </a>
+                </div>
+                <div class="option__item">
+                  <a href="" id="icon" class="wishlist">
+                    <i class="icon2 far fa-heart"></i>
+                    <span class="notice">03</span>
+                  </a>
+                </div>
+                <div class="option__item">
+                  <a href="" id="icon" class="cart">
+                    <i class="icon2 fas fa-shopping-cart"></i>
+                    <span class="notice">0</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>            	
+      </div>                   
+    </div>           
+	
+<!--   Products   -->
+	<div class="shop-full-width__product">
+    	<div class="page-title">
+      		<div class="grid wide_1320">
+          		<div class="row align-center">
+              		<div class="col l-6 m-7">
+                      <h2>Shop Full Width</h2>
+                  	</div>
+                  	<div class="col l-6 m-5">
+                      <ul class="page-title__content">
+                        <li><a href="">Home</a></li>
+                        <li>Shop</li>
+                      </ul>
+                  	</div>
+              	</div>
+          	</div>
+      	</div>
+      
+      	<div class="sfw__products-area ptb-100">
+          	<div class="grid wide_1320">
+              <div class="grid__sorting row align-center">
+              	<div class="col l-6 m-6 result-count">
+                  	<div class="d-flex align-center">
+                      <p>We found <span class="count">09</span> products available for you</p>                      
+                  	</div>
+                </div>
+                <div class="col l-6 m-6 ordering">
+                	<div class="select-box">
+                      <label>Sort by:</label>
+                      <select>
+                        <option>Default</option>
+                        <option>Popularity</option>
+                        <option>Latest</option>
+                        <option>Price: low to high</option>
+                        <option>Price: high to low</option>
+                      </select>
+                  	</div>
+                </div>
+              </div>
+              <div class="row">
+              	<div class="col l-4 m-6 c-6">
+                	<div class="products__slide-item item">
+                      <a href="" class="d-block">
+                        <img src="https://res.cloudinary.com/dbbfi0kuz/image/upload/v1624426726/products3_00c795c71b.jpg" alt="">
+                      </a>
+                      <ul class="products__btn">
+                        <li>
+                          <button type="button">
+                            <i class="fas fa-search-plus"></i>
+                            <span class="products__btn-label">Quick View</span>
+                          </button>
+                        </li>
+                        <li>
+                          <a href="">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span class="products__btn-label">Compare</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="">
+                            <i class="far fa-heart"></i>
+                            <span class="products__btn-label">Add to Wishlist</span>
+                          </a>
+                        </li>
+                      </ul>
+                      <span class="out-stock">Out of Stock</span>
+                      <div class="products-item__content">
+                        <h3><a> Trendy woman black blazer </a></h3>
+                        <button class="add-to-cart">
+                          Add to cart
+                          <i class="cart-btn fas fa-cart-plus"></i>
+                        </button>
+                        <div class="products-item__price">
+                          <span class="price-old">$241.99</span>
+                          <span class="price-new">$200.99</span>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="col l-4 m-6 c-6">
+                	<div class="products__slide-item item">
+                      <a href="" class="d-block">
+                        <img src="https://res.cloudinary.com/dbbfi0kuz/image/upload/v1624426726/products3_00c795c71b.jpg" alt="">
+                      </a>
+                      <ul class="products__btn">
+                        <li>
+                          <button type="button">
+                            <i class="fas fa-search-plus"></i>
+                            <span class="products__btn-label">Quick View</span>
+                          </button>
+                        </li>
+                        <li>
+                          <a href="">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span class="products__btn-label">Compare</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="">
+                            <i class="far fa-heart"></i>
+                            <span class="products__btn-label">Add to Wishlist</span>
+                          </a>
+                        </li>
+                      </ul>
+                      <span class="out-stock">Out of Stock</span>
+                      <div class="products-item__content">
+                        <h3><a> Trendy woman black blazer </a></h3>
+                        <button class="add-to-cart">
+                          Add to cart
+                          <i class="cart-btn fas fa-cart-plus"></i>
+                        </button>
+                        <div class="products-item__price">
+                          <span class="price-old">$241.99</span>
+                          <span class="price-new">$200.99</span>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="col l-4 m-6 c-6">
+                	<div class="products__slide-item item">
+                      <a href="" class="d-block">
+                        <img src="https://res.cloudinary.com/dbbfi0kuz/image/upload/v1624426726/products3_00c795c71b.jpg" alt="">
+                      </a>
+                      <ul class="products__btn">
+                        <li>
+                          <button type="button">
+                            <i class="fas fa-search-plus"></i>
+                            <span class="products__btn-label">Quick View</span>
+                          </button>
+                        </li>
+                        <li>
+                          <a href="">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span class="products__btn-label">Compare</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="">
+                            <i class="far fa-heart"></i>
+                            <span class="products__btn-label">Add to Wishlist</span>
+                          </a>
+                        </li>
+                      </ul>
+                      <span class="out-stock">Out of Stock</span>
+                      <div class="products-item__content">
+                        <h3><a> Trendy woman black blazer </a></h3>
+                        <button class="add-to-cart">
+                          Add to cart
+                          <i class="cart-btn fas fa-cart-plus"></i>
+                        </button>
+                        <div class="products-item__price">
+                          <span class="price-old">$241.99</span>
+                          <span class="price-new">$200.99</span>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="col l-4 m-6 c-6">
+                	<div class="products__slide-item item">
+                      <a href="" class="d-block">
+                        <img src="https://res.cloudinary.com/dbbfi0kuz/image/upload/v1624426726/products3_00c795c71b.jpg" alt="">
+                      </a>
+                      <ul class="products__btn">
+                        <li>
+                          <button type="button">
+                            <i class="fas fa-search-plus"></i>
+                            <span class="products__btn-label">Quick View</span>
+                          </button>
+                        </li>
+                        <li>
+                          <a href="">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span class="products__btn-label">Compare</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="">
+                            <i class="far fa-heart"></i>
+                            <span class="products__btn-label">Add to Wishlist</span>
+                          </a>
+                        </li>
+                      </ul>
+                      <span class="out-stock">Out of Stock</span>
+                      <div class="products-item__content">
+                        <h3><a> Trendy woman black blazer </a></h3>
+                        <button class="add-to-cart">
+                          Add to cart
+                          <i class="cart-btn fas fa-cart-plus"></i>
+                        </button>
+                        <div class="products-item__price">
+                          <span class="price-old">$241.99</span>
+                          <span class="price-new">$200.99</span>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="col l-4 m-6 c-6">
+                	<div class="products__slide-item item">
+                      <a href="" class="d-block">
+                        <img src="https://res.cloudinary.com/dbbfi0kuz/image/upload/v1624426726/products3_00c795c71b.jpg" alt="">
+                      </a>
+                      <ul class="products__btn">
+                        <li>
+                          <button type="button">
+                            <i class="fas fa-search-plus"></i>
+                            <span class="products__btn-label">Quick View</span>
+                          </button>
+                        </li>
+                        <li>
+                          <a href="">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span class="products__btn-label">Compare</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="">
+                            <i class="far fa-heart"></i>
+                            <span class="products__btn-label">Add to Wishlist</span>
+                          </a>
+                        </li>
+                      </ul>
+                      <span class="out-stock">Out of Stock</span>
+                      <div class="products-item__content">
+                        <h3><a> Trendy woman black blazer </a></h3>
+                        <button class="add-to-cart">
+                          Add to cart
+                          <i class="cart-btn fas fa-cart-plus"></i>
+                        </button>
+                        <div class="products-item__price">
+                          <span class="price-old">$241.99</span>
+                          <span class="price-new">$200.99</span>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="col l-4 m-6 c-6">
+                	<div class="products__slide-item item">
+                      <a href="" class="d-block">
+                        <img src="https://res.cloudinary.com/dbbfi0kuz/image/upload/v1624426726/products3_00c795c71b.jpg" alt="">
+                      </a>
+                      <ul class="products__btn">
+                        <li>
+                          <button type="button">
+                            <i class="fas fa-search-plus"></i>
+                            <span class="products__btn-label">Quick View</span>
+                          </button>
+                        </li>
+                        <li>
+                          <a href="">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span class="products__btn-label">Compare</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="">
+                            <i class="far fa-heart"></i>
+                            <span class="products__btn-label">Add to Wishlist</span>
+                          </a>
+                        </li>
+                      </ul>
+                      <span class="out-stock">Out of Stock</span>
+                      <div class="products-item__content">
+                        <h3><a> Trendy woman black blazer </a></h3>
+                        <button class="add-to-cart">
+                          Add to cart
+                          <i class="cart-btn fas fa-cart-plus"></i>
+                        </button>
+                        <div class="products-item__price">
+                          <span class="price-old">$241.99</span>
+                          <span class="price-new">$200.99</span>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="col l-4 m-6 c-6">
+                	<div class="products__slide-item item">
+                      <a href="" class="d-block">
+                        <img src="https://res.cloudinary.com/dbbfi0kuz/image/upload/v1624426726/products3_00c795c71b.jpg" alt="">
+                      </a>
+                      <ul class="products__btn">
+                        <li>
+                          <button type="button">
+                            <i class="fas fa-search-plus"></i>
+                            <span class="products__btn-label">Quick View</span>
+                          </button>
+                        </li>
+                        <li>
+                          <a href="">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span class="products__btn-label">Compare</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="">
+                            <i class="far fa-heart"></i>
+                            <span class="products__btn-label">Add to Wishlist</span>
+                          </a>
+                        </li>
+                      </ul>
+                      <span class="out-stock">Out of Stock</span>
+                      <div class="products-item__content">
+                        <h3><a> Trendy woman black blazer </a></h3>
+                        <button class="add-to-cart">
+                          Add to cart
+                          <i class="cart-btn fas fa-cart-plus"></i>
+                        </button>
+                        <div class="products-item__price">
+                          <span class="price-old">$241.99</span>
+                          <span class="price-new">$200.99</span>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="col l-4 m-6 c-6">
+                	<div class="products__slide-item item">
+                      <a href="" class="d-block">
+                        <img src="https://res.cloudinary.com/dbbfi0kuz/image/upload/v1624426726/products3_00c795c71b.jpg" alt="">
+                      </a>
+                      <ul class="products__btn">
+                        <li>
+                          <button type="button">
+                            <i class="fas fa-search-plus"></i>
+                            <span class="products__btn-label">Quick View</span>
+                          </button>
+                        </li>
+                        <li>
+                          <a href="">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span class="products__btn-label">Compare</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="">
+                            <i class="far fa-heart"></i>
+                            <span class="products__btn-label">Add to Wishlist</span>
+                          </a>
+                        </li>
+                      </ul>
+                      <span class="out-stock">Out of Stock</span>
+                      <div class="products-item__content">
+                        <h3><a> Trendy woman black blazer </a></h3>
+                        <button class="add-to-cart">
+                          Add to cart
+                          <i class="cart-btn fas fa-cart-plus"></i>
+                        </button>
+                        <div class="products-item__price">
+                          <span class="price-old">$241.99</span>
+                          <span class="price-new">$200.99</span>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="col l-4 m-6 c-6">
+                	<div class="products__slide-item item">
+                      <a href="" class="d-block">
+                        <img src="https://res.cloudinary.com/dbbfi0kuz/image/upload/v1624426726/products3_00c795c71b.jpg" alt="">
+                      </a>
+                      <ul class="products__btn">
+                        <li>
+                          <button type="button">
+                            <i class="fas fa-search-plus"></i>
+                            <span class="products__btn-label">Quick View</span>
+                          </button>
+                        </li>
+                        <li>
+                          <a href="">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span class="products__btn-label">Compare</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="">
+                            <i class="far fa-heart"></i>
+                            <span class="products__btn-label">Add to Wishlist</span>
+                          </a>
+                        </li>
+                      </ul>
+                      <span class="out-stock">Out of Stock</span>
+                      <div class="products-item__content">
+                        <h3><a> Trendy woman black blazer </a></h3>
+                        <button class="add-to-cart">
+                          Add to cart
+                          <i class="cart-btn fas fa-cart-plus"></i>
+                        </button>
+                        <div class="products-item__price">
+                          <span class="price-old">$241.99</span>
+                          <span class="price-new">$200.99</span>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="col l-4 m-6 c-6">
+                	<div class="products__slide-item item">
+                      <a href="" class="d-block">
+                        <img src="https://res.cloudinary.com/dbbfi0kuz/image/upload/v1624426726/products3_00c795c71b.jpg" alt="">
+                      </a>
+                      <ul class="products__btn">
+                        <li>
+                          <button type="button">
+                            <i class="fas fa-search-plus"></i>
+                            <span class="products__btn-label">Quick View</span>
+                          </button>
+                        </li>
+                        <li>
+                          <a href="">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span class="products__btn-label">Compare</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="">
+                            <i class="far fa-heart"></i>
+                            <span class="products__btn-label">Add to Wishlist</span>
+                          </a>
+                        </li>
+                      </ul>
+                      <span class="out-stock">Out of Stock</span>
+                      <div class="products-item__content">
+                        <h3><a> Trendy woman black blazer </a></h3>
+                        <button class="add-to-cart">
+                          Add to cart
+                          <i class="cart-btn fas fa-cart-plus"></i>
+                        </button>
+                        <div class="products-item__price">
+                          <span class="price-old">$241.99</span>
+                          <span class="price-new">$200.99</span>
+                        </div>
+                      </div>
+                    </div>
+                </div><div class="col l-4 m-6 c-6">
+                	<div class="products__slide-item item">
+                      <a href="" class="d-block">
+                        <img src="https://res.cloudinary.com/dbbfi0kuz/image/upload/v1624426726/products3_00c795c71b.jpg" alt="">
+                      </a>
+                      <ul class="products__btn">
+                        <li>
+                          <button type="button">
+                            <i class="fas fa-search-plus"></i>
+                            <span class="products__btn-label">Quick View</span>
+                          </button>
+                        </li>
+                        <li>
+                          <a href="">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span class="products__btn-label">Compare</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="">
+                            <i class="far fa-heart"></i>
+                            <span class="products__btn-label">Add to Wishlist</span>
+                          </a>
+                        </li>
+                      </ul>
+                      <span class="out-stock">Out of Stock</span>
+                      <div class="products-item__content">
+                        <h3><a> Trendy woman black blazer </a></h3>
+                        <button class="add-to-cart">
+                          Add to cart
+                          <i class="cart-btn fas fa-cart-plus"></i>
+                        </button>
+                        <div class="products-item__price">
+                          <span class="price-old">$241.99</span>
+                          <span class="price-new">$200.99</span>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+          	</div>
+      	</div>
+    </div>
+
+
+    
+    <!-- 	Footer	 -->
+    <footer class="footer pt-100">
+    <div class="grid wide_1320">
+      <div class="footer__list row">
+        <div class="footer-item--with-logo col l-5 m-12 c-12">
+          <a href="" class="logo"><img src="https://vaxim-ng.envytheme.com/assets/img/logo.png"></a>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+          <ul class="social-link">
+            <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href=""><i class="fab fa-twitter"></i></a></li>
+            <li><a href=""><i class="fab fa-instagram"></i></a></li>
+            <li><a href=""><i class="fab fa-pinterest-p"></i></a></li>
+          </ul>
+          <a href="" class="location">Check our shop in Google Map</a>
+        </div>
+        <div class="footer-item col l-2 m-4 c-12">
+          <h3>Help</h3>
+          <ul class="about-list">
+            <li><a href="">Track Your Order</a></li>
+            <li><a href="">Product Guides</a></li>
+            <li><a href="">Wishlists</a></li>
+            <li><a href="">Privacy Policy</a></li>
+            <li><a href="">Store Locator</a></li>
+          </ul>
+        </div>
+        <div class="footer-item col l-2 m-4 c-12">
+          <h3>Company</h3>
+          <ul class="about-list">
+            <li><a href="">About Us</a></li>
+            <li><a href="">Contact Us</a></li>
+            <li><a href="">Location Us</a></li>
+            <li><a href="">Careers</a></li>
+            <li><a href="">Gift Cards</a></li>
+          </ul>
+        </div>
+        <div class="footer-item col l-3 m-4 c-12">
+          <h3>Help</h3>
+          <ul class="about-list">
+            <li><a href="">Instagram</a></li>
+            <li><a href="">Printerest</a></li>
+            <li><a href="">Facebook</a></li>
+          </ul>
+          <div class="phone">
+            <span>Phone:</span>
+            <a href="">(+123) 456-7898</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <div class="row align-center">
+          <div class="col l-6">
+            <p>Copyright @2021 Vaxim. All Rights Reserved By <a href="">EnvyTheme</a></p>
+          </div>
+          <div class="col l-6">
+            <div class="payment">
+              <img src="https://vaxim-ng.envytheme.com/assets/img/payment.png">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+	<button onclick="topFunction()" type="button" class="scroll-back color" id="myBtn">
+  <div class="symbol-container">
+    <svg _ngcontent-dbv-c22="" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="ng-star-inserted"><path _ngcontent-dbv-c22="" d="M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z"></path></svg>
+  </div>
+</button>
+
+
+
+
+
+
+<main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1" style="display:none">
+  {{ content_for_layout }}
+</main>
+
+
+
+
+
+<script>
+  //click open menu
+
+  		var menu = document.getElementById('myheader');
+        var btnMenu = document.getElementById('navbar-btn');
+		var sub_content_menu = document.getElementById("Menu");
+        var menuHeight = menu.clientHeight;
+        btnMenu.onclick = function(){
+        var isClose = menu.clientHeight=== menuHeight;
+            if(isClose){
+                menu.style.height = 'auto';
+              	sub_content_menu.classList.add("active-content-menu");
+                    
+            }
+            else{
+                menu.style.height = null;
+      			sub_content_menu.classList.remove("active-content-menu");
+
+            }
+        }
+
+  
+  //     Scroll back
+  var mybutton = document.getElementById("myBtn");
+
+  window.onscroll = function() {scrollFunction();
+                               myFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
+//   sticky
+  var header = document.getElementById("myheader");
+  var sticky = header.offsetTop;
+  function myFunction() {
+    if (window.pageYOffset > sticky) {
+      header.classList.add("sticky");
+       
+      
+    } else {
+      header.classList.remove("sticky");
+    }
+  }
+
+  
+  
+
+  $('.owl-carousel').owlCarousel({
+    loop:false,
+    margin:15,
+    nav:true,
+    navText:["<i class='btn-nav fas fa-angle-left'></i>","<i class='btn-nav fas fa-angle-right'></i>"],
+    dots:false,
+    responsive:{
+
+      0:{
+
+        items:1
+      },
+      600:{
+
+        items:2
+      },
+      1000:{
+
+        items:3
+      }
+    }
+  })
+
+
+</script>
+
+  </div>
+</body>
+</html>

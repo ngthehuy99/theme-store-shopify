@@ -1,0 +1,98 @@
+  Shopify.addItem = function(variant_id, quantity, callback, attr) {
+
+    var quantity = quantity || 0;
+    if(typeof attr == 'undefined'){
+      attr = [];
+    }
+    var params = {
+      type: 'POST',
+      url: '/cart/add.js',
+      data: {quantity: quantity, id:variant_id,properties: attr},
+      dataType: 'json',
+      success: function(line_item) {
+
+        if ((typeof callback) === 'function') {
+          callback(line_item);
+        } else {
+          $.get('/cart?view=json', function(data) {
+
+            $('.cart-flyout').html(data);
+            
+          });
+          $.getJSON('/cart.js', function(cart) {
+            $(".la-cart-count").html(cart.item_count);
+          } );
+          $('body').addClass('open-cart-aside');
+        }
+      },
+      error: function(XMLHttpRequest, textStatus) {
+        $.onError(XMLHttpRequest, textStatus);
+      }
+    };
+    $.ajax(params);
+  };
+  
+Shopify.removeItem = function(variant_id, callback) {
+  var params = {
+    type: 'POST',
+    url: '/cart/change.js',
+    beforeSend : function (){
+       jQuery(".cart-flyout").addClass('removing-process');
+   },
+    data:  'quantity=0&id='+variant_id,
+    dataType: 'json',
+    success: function(cart) { 
+      if ((typeof callback) === 'function') {
+        callback(cart);
+      }
+      else {
+        jQuery.get('/cart?view=json', function(data) {
+         /*optional stuff to do after success */
+          jQuery('.cart-flyout').html(data);
+          
+       });
+       jQuery.getJSON('/cart.js', function(cart) {
+          jQuery(".la-cart-count").html(cart.item_count);
+        });
+      }
+    },
+    complete: function() {
+      jQuery(".cart-flyout").removeClass('removing-process');
+    },
+    error: function(XMLHttpRequest, textStatus) {
+      jQuery(".cart-flyout").removeClass('removing-process');
+      Shopify.onError(XMLHttpRequest, textStatus);
+    }
+  };
+  jQuery.ajax(params);
+};
+
+jQuery(document).ready(function($) {
+    $(document).on("click", ".ajax_form_cart", function(e) {
+      e.preventDefault();
+      var t = $(this);
+      $(this).attr("disabled", "disabled").css("pointer-events", "none").addClass("loading"), $.ajax({
+        type: "POST",
+        url: "/cart/add.js",
+        data: t.closest("form").serialize(),
+        dataType: "json",
+        success: function(e) {
+          $.get("/cart?view=json", function(e) {
+            $(".cart-flyout").html(e);
+            
+          }), $.getJSON("/cart.js", function(e) {
+           $(".la-cart-count").html(e.item_count);
+          })
+          $('a.lightcase-icon-close').trigger('click');
+          $('body').addClass('open-cart-aside');
+          
+        },
+        error: function(XMLHttpRequest, textStatus) {
+          Shopify.onError(XMLHttpRequest, textStatus);
+        },
+        complete: function() {
+          t.removeAttr("disabled").css("pointer-events", "auto").removeClass("loading")
+        }
+      })
+    })
+});

@@ -1,0 +1,381 @@
+{% comment %}theme-check-disable UndefinedObject{% endcomment %}
+{{ 'section-footer.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="{{ 'component-newsletter.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-list-payment.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-list-social.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'disclosure.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'component-newsletter.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-list-menu.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-list-payment.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-list-social.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'disclosure.css' | asset_url | stylesheet_tag }}</noscript>
+
+<footer class="footer color-{{ section.settings.color_scheme }} gradient pt-100">
+  {%- if section.blocks.size > 0 or section.settings.newsletter_enable or section.settings.show_social -%}
+    <div class="grid wide_1320">
+      {%for block in section.blocks%}
+      <div class="footer__list row">
+        <div class="footer-item--with-logo col l-5 m-12 c-12">
+          <a href="" class="logo">
+            {%if section.settings.logo != blank %}
+            <img srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+                 src="{{ section.settings.logo | img_url: image_size }}"
+                 loading="lazy"
+                 class="header__heading-logo"
+                 width="{{ section.settings.logo.width }}"
+                 height="{{ section.settings.logo.height }}"
+                 alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
+                 >
+            {%else%}
+            <h3>{{section.settings.logo-text}}</h3>
+            {%endif%}
+          </a>
+          <p>{{section.settings.sub-text}}</p>
+          {%comment%}
+          <ul class="social-link">
+            <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href=""><i class="fab fa-twitter"></i></a></li>
+            <li><a href=""><i class="fab fa-instagram"></i></a></li>
+            <li><a href=""><i class="fab fa-pinterest-p"></i></a></li>
+          </ul>
+          {%endcomment%}
+          {%if section.settings.show_social%}
+          <ul class="social-link">
+            {% if settings.social_facebook_link != blank %}
+            <li><a href="{{ settings.social_facebook_link | escape }}" class="facebook" title="Facebook" target="_blank" rel="nofollow"><i class="fab fa-facebook-f"></i></a></li>
+            {% endif %}
+            {% if settings.social_twitter_link != blank %}
+            <li><a href="{{ settings.social_twitter_link | escape }}" class="twitter" title="Twitter" target="_blank" rel="nofollow"><i class="fab fa-twitter"></i></a></li>
+            {% endif %}
+            {% if settings.social_instagram_link != blank %}
+            <li><a href="{{ settings.social_instagram_link | escape }}" class="instagram" title="Instagram" target="_blank" rel="nofollow"><i class="fab fa-instagram"></i></a></li>
+            {% endif %}
+            {% if settings.social_pinterest_link != blank %}
+            <li><a href="{{ settings.social_pinterest_link | escape }}" class="pinterest" title="Pinterest" target="_blank" rel="nofollow"><i class="fab fa-pinterest-p"></i></a></li>
+            {% endif %}
+            {% if settings.social_behance_link != blank %}
+            <li><a href="{{ settings.social_behance_link | escape }}" class="behance" title="Behance" target="_blank" rel="nofollow"><i class="fab fa-behance"></i></a></li>
+            {% endif %}
+            {% if settings.social_tumblr_link != blank %}
+            <li><a href="{{ settings.social_tumblr_link | escape }}" class="tumblr" title="Tumblr" target="_blank" rel="nofollow"><i class="fab fa-tumblr"></i></a></li>
+            {% endif %}
+            {% if settings.social_snapchat_link != blank %}
+            <li><a href="{{ settings.social_snapchat_link | escape }}" class="snapchat" title="Snapchat" target="_blank" rel="nofollow"><i class="fab fa-snapchat"></i></a></li>
+            {% endif %}
+            {% if settings.social_youtube_link != blank %}
+            <li><a href="{{ settings.social_youtube_link | escape }}" class="youtube" title="Youtube" target="_blank" rel="nofollow"><i class="fab fa-youtube"></i></a></li>
+            {% endif %}
+            {% if settings.social_vimeo_link != blank %}
+            <li><a href="{{ settings.social_vimeo_link | escape }}" class="vimeo" title="Vimeo" target="_blank" rel="nofollow"><i class="fab fa-vimeo"></i></a></li>
+            {% endif %}
+          </ul>
+          {%endif%}
+			{%if section.settings.location !=blank%}
+          <a href="{{section.settings.location-url}}" class="location">{{section.settings.location}}</a>
+          {%endif%}
+        </div>
+
+        {%- for link in block.settings.menu.links -%}
+        <div class="footer-item col l-2 m-4 c-12">
+          <h3>{{link.title}}</h3>
+          {%if link.links != blank %}
+          <ul class="about-list">
+            {%for childlink in link.links%}
+            <li>
+              <a href="{{childlink.url}}">{{childlink.title}}</a>
+            </li>
+            {%endfor%}
+          </ul>
+          {%endif%}
+        </div>
+        {%endfor%}
+
+
+      </div>
+      {%endfor%}
+
+      <div class="copyright">
+        <div class="row align-center">
+          {%comment%}
+          <div class="col l-6">
+            
+          </div>
+          <div class="col l-6">
+            <div class="payment">
+              <img src="https://vaxim-ng.envytheme.com/assets/img/payment.png">
+            </div>
+          </div>
+          {%endcomment%}
+          
+          <div class="col l-6">
+            <p>Copyright @2021 Vaxim. All Rights Reserved By <a href="">EnvyTheme</a></p>
+          </div>
+          {%- if section.settings.payment_enable -%}
+          <div class="col l-6">
+<!--             <span class="visually-hidden">{{ 'sections.footer.payment' | t }}</span> -->
+            <ul class="list list-payment" role="list">
+              {%- for type in shop.enabled_payment_types -%}
+              <li class="list-payment__item ">
+                {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+              </li>
+              {%- endfor -%}
+            </ul>
+            {%if section.settings.payment_enable%}
+          <ul class="list list-payment" role="list">
+            {% if settings.payment_paypal_link != blank %}
+            <li><a href="{{ settings.payment_paypal_link | escape }}" class="paypal" title="Paypal" target="_blank" rel="nofollow"><i class="fab fa-cc-paypal"></i></a></li>
+            {% endif %}
+            {% if settings.payment_visa_link != blank %}
+            <li><a href="{{ settings.payment_visa_link | escape }}" class="visa" title="Visa" target="_blank" rel="nofollow"><i class="fab fa-cc-visa"></i></a></li>
+            {% endif %}
+            {% if settings.payment_mastercard_link != blank %}
+            <li><a href="{{ settings.payment_mastercard_link | escape }}" class="mastercart" title="Mastercard" target="_blank" rel="nofollow"><i class="fab fa-cc-mastercard"></i></a></li>
+            {% endif %}
+            {% if settings.payment_americanex_link != blank %}
+            <li><a href="{{ settings.payment_americanex_link | escape }}" class="americanex" title="American Express" target="_blank" rel="nofollow"><i class="fab fa-cc-amex"></i></a></li>
+            {% endif %}
+            {% if settings.payment_applepay_link != blank %}
+            <li><a href="{{ settings.payment_applepay_link | escape }}" class="applepay" title="Apple Pay" target="_blank" rel="nofollow"><i class="fab fa-cc-apple-pay"></i></a></li>
+            {% endif %}
+            {% if settings.payment_amzpay_link != blank %}
+            <li><a href="{{ settings.payment_amzpay_link | escape }}" class="amazonpay" title="Amazon Pay" target="_blank" rel="nofollow"><i class="fab fa-cc-amazon-pay"></i></a></li>
+            {% endif %}            
+          </ul>
+          {%endif%}
+          </div>
+          {%- endif -%}          
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+  <button onclick="topFunction()" type="button" class="scroll-back color" id="myBtn">
+    <div class="symbol-container">
+      <svg _ngcontent-dbv-c22="" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="ng-star-inserted"><path _ngcontent-dbv-c22="" d="M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z"></path></svg>
+    </div>
+  </button>
+ 
+</footer>
+
+{% javascript %}
+ 
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "t:sections.footer.name",
+
+  "blocks": [
+    {
+      "type": "link_list",
+      "name": "t:sections.footer.blocks.link_list.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Quick links",
+          "label": "t:sections.footer.blocks.link_list.settings.heading.label",
+          "info": "t:sections.footer.blocks.link_list.settings.heading.info"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "default": "footer",
+          "label": "t:sections.footer.blocks.link_list.settings.menu.label",
+          "info": "t:sections.footer.blocks.link_list.settings.menu.info"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.footer.blocks.text.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Heading",
+          "label": "t:sections.footer.blocks.text.settings.heading.label"
+        },
+        {
+          "type": "richtext",
+          "id": "subtext",
+          "default": "<p>Share store details, promotions, or brand content with your customers.</p>",
+          "label": "t:sections.footer.blocks.text.settings.subtext.label"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "min": 50,
+          "max": 200,
+          "step": 5,
+          "unit": "px",
+          "label": "Image width",
+          "default": 100
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Image alignment on large screen",
+          "options": [
+            {
+              "value": "",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type":"image_picker",
+      "id": "logo",
+      "label":"Logo"
+    },
+    {
+      "type":"text",
+      "id": "logo-text",
+      "label":"Title",
+      "default":"Vaxim"
+    },
+    {
+      "type":"text",
+      "id": "sub-text",
+      "label":"Sub title"
+    },
+    {
+      "type":"text",
+      "id": "location",
+      "label":"Location title"
+    },
+    {
+      "type":"text",
+      "id": "location-url",
+      "label":"Location link",
+      "default":"https://www.google.com/maps/@21.047609,105.7938073,15z"
+    },
+
+{
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.footer.settings.color_scheme.options__1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.footer.settings.color_scheme.options__2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.footer.settings.color_scheme.options__3.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.footer.settings.color_scheme.options__4.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.footer.settings.color_scheme.options__5.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.footer.settings.color_scheme.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__1.content",
+      "info": "t:sections.footer.settings.header__1.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "newsletter_enable",
+      "default": true,
+      "label": "t:sections.footer.settings.newsletter_enable.label"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_heading",
+      "default": "Subscribe to our emails",
+      "label": "t:sections.footer.settings.newsletter_heading.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__2.content",
+      "info": "t:sections.footer.settings.header__2.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "default": true,
+      "label": "t:sections.footer.settings.show_social.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__3.content",
+      "info": "t:sections.footer.settings.header__4.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_country_selector",
+      "default": true,
+      "label": "t:sections.footer.settings.enable_country_selector.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__5.content",
+      "info": "t:sections.footer.settings.header__6.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_language_selector",
+      "default": true,
+      "label": "t:sections.footer.settings.enable_language_selector.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__7.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "payment_enable",
+      "default": true,
+      "label": "t:sections.footer.settings.payment_enable.label"
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "link_list"
+      },
+      {
+        "type": "text"
+      }
+    ]
+  }
+}
+{% endschema %}

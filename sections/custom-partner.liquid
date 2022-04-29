@@ -1,0 +1,87 @@
+<div class="partner__area pt-100 pb-100">
+    <div class="grid wide_1320 pd-12">
+      <div class="partner row">
+        <div class="partner-item col l-3 m-12 c-12">
+          {%if section.settings.partner_title != blank%}
+          <div class="partner-title">
+            <h4>{{section.settings.partner_title}}</h4>
+          </div>
+          {%endif%}
+        </div>
+        <div class="partner-item col l-9 m-12 c-12">
+          <div class="partner__list align-center">
+            {%for block in section.blocks%}
+              {%if block.settings.partner_item != blank %}
+                <div class="partner__list-item">
+                  <a href="{{block.settings.partner_url}}">
+                    <img src="{{block.settings.partner_item | img_url}}">
+                  </a>
+                </div>
+              {%endif%}
+            {%endfor%}
+            {%comment%}
+            <div class="partner__list-item">
+              <a href="">
+                <img src="https://vaxim-ng.envytheme.com/assets/img/partner/partner2.png">
+              </a>
+            </div>
+            <div class="partner__list-item">
+              <a href="">
+                <img src="https://vaxim-ng.envytheme.com/assets/img/partner/partner3.png">
+              </a>
+            </div>
+            <div class="partner__list-item">
+              <a href="">
+                <img src="https://vaxim-ng.envytheme.com/assets/img/partner/partner4.png">
+              </a>
+            </div>
+            <div class="partner__list-item">
+              <a href="">
+                <img src="https://vaxim-ng.envytheme.com/assets/img/partner/partner5.png">
+              </a>
+            </div>
+            {%endcomment%}
+          </div>
+        </div>                    
+      </div>
+    </div>
+  </div>
+
+{% schema %}
+  {
+    "name": "Custom Partner",
+    "settings": [
+	{
+        "id": "partner_title",
+        "type": "text",
+        "label": "Text box heading",
+        "default": "Our Trusted Branding Partners"
+      }
+      
+    ],
+    "blocks": [
+      {
+        "type": "custom_partner",
+        "name":"Partner list",
+		"settings": [
+			{
+				"type":"image_picker",
+				"id":"partner_item",
+				"label": "logo"
+			},
+			{
+				"type":"url",
+				"id":"partner_url",
+				"label":"URL"
+			}
+		]
+      }
+    ]
+	}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

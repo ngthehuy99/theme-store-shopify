@@ -1,0 +1,41 @@
+{%- layout none -%}
+<div class="cart-flyout">
+  <div class="cart-flyout--inner">
+    <a href="javascript:;" class="btn-close-cart"><i class="fas fa-times"></i></a>
+    <div class="cart-flyout__content">
+      <div class="cart-flyout__heading">Shopping Cart</div>
+      <div class="widget_shopping_cart_content">
+        {%- if cart.item_count > 0 -%}
+        <ul class="woocommerce-mini-cart cart_list product_list_widget">
+          {%- for item in cart.items -%}
+          <li class="woocommerce-mini-cart-item mini_cart_item">
+            <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="remove" aria-label="Remove this item" onclick="Shopify.removeItem({{ item.id }}); return false"> ×</a>
+            <a href="{{ item.url | within: item.product.collections.last }}">
+              <img width="80px" height="100px" src="{{ item | img_url: '80x' | split:'?' | first }}" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="">
+
+            </a>
+            <div class="cart-flyout-item">
+              <span class="cart-flyout-item-content">{{ item.product.title }}</span>
+              <span class="cart-flyout-item-quantity">{{ item.quantity }} × <span class="woocommerce-Price-amount amount">{{ item.price | money }}</span></span>
+            </div>
+          </li>
+          {%- endfor -%}
+        </ul>
+        {%- else -%}
+        <p class="woocommerce-mini-cart__empty-message">{{ 'cart.general.empty' | t }}</p>
+        {%- endif -%}
+        {%- if cart.item_count > 0 -%}
+        <div class="woocommerce-mini-cart__total total">
+          <strong>Subtotal</strong> 
+          <span class="woocommerce-Price-amount amount">{{ cart.total_price | money }}</span>
+        </div>
+        <p class="woocommerce-mini-cart__buttons buttons">
+          <a href="/cart" class="button wc-forward">View Cart</a>
+          <a href="/checkout" class="button checkout wc-forward">Checkout</a>
+        </p>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="la-overlay-global"></div>

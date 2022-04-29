@@ -1,0 +1,212 @@
+
+{%- layout none -%}
+
+{%- assign g_sale = false -%}
+{%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
+{%- assign g_sale = true -%}
+{%- endif -%}
+
+{%- assign g_sold_out = true -%}
+{%- if product.available  -%}
+{%- assign g_sold_out = false -%}
+{%- endif -%}
+
+{%- assign g_new = false -%}
+{%- for tag in product.tags -%}
+{%- assign g_tag_handle = tag | handle -%}
+{%- if g_tag_handle == 'new' -%}
+{%- assign g_new = true -%}
+{%- endif -%}
+{%- endfor -%}
+
+{%- assign g_hot = false -%}
+{%- for tag in product.tags -%}
+{%- assign g_tag_handle = tag | handle -%}
+{%- if g_tag_handle == 'hot' -%}
+{%- assign g_hot = true -%}
+{%- endif -%}
+{%- endfor -%}
+
+
+{% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+{%- assign g_current_variant = product.selected_or_first_available_variant -%}
+
+
+<div class="product-quickview">
+  <div class="quickview-content">
+    <div class="quickview-body">
+      <div class="row">
+        <div class="col l-6 m-6">
+          <div class="single__image-product qv-product-images" >
+            {% for image in product.images %}
+            <div class="image-large-bg" style="background-image: url({{ image | img_url: 'master' }})"></div>
+
+            <img
+                 srcset="{% if image.product.images.width >= 288 %}{{ image.product.images | img_url: '288x' }} 288w,{% endif %}
+                         {% if image.product.images.width >= 576 %}{{ image.product.images | img_url: '576x' }} 576w,{% endif %}
+                         {% if image.product.images.width >= 750 %}{{ image.product.images | img_url: '750x' }} 750w,{% endif %}
+                         {% if image.product.images.width >= 1100 %}{{ image.product.images | img_url: '1100x' }} 1100w,{% endif %}
+                         {% if image.product.images.width >= 1500 %}{{ image.product.images | img_url: '1500x' }} 1500w,{% endif %}
+                         {{ image.product.images | img_url: 'master' }} {{ image.product.images.width }}w"
+                 src="{{ image | img_url: '1500x' }}"
+                 sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | times: 0.64 | round }}px, (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
+                 loading="lazy"
+                 width="576"
+                 height="{{ 576 | divided_by: image.aspect_ratio | ceil }}"
+                 >
+
+            {% endfor %}
+          </div>
+        </div>
+        <div class="col l-6 m-6">
+          <div class="quickview-scroll nano">
+            <div class="nano-content qv-content"> 
+              <h1 class="qv-product-title product-name-normal">{{ product.title }}</h1>
+              <div class="ratings">
+                <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+              </div> 
+              <div class="box-single-product">
+                <div class="single-price-wrapper clearfix">
+                  <div class="no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+                    {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}
+                  </div>
+                  
+                  
+                  <div class="availability">
+                    {% if product.available %}
+                    <span class="product-in-stock">
+                      <i class="far fa-check-circle"></i>
+                      In stock
+                    </span>
+                    {% else %}
+                    <span class="product-out-stock">
+                      <i class="far fa-check-circle"></i>
+                      Out of stock
+                    </span>
+                    {% endif %}
+                  </div>
+                </div>
+				{% include 'social-sharing' %}	
+                <div class="product-form__input product-form__quantity" {{ block.shopify_attributes }}>
+
+
+                  <quantity-input class="quantity">
+                    <button class="quantity__button no-js-hidden" name="minus" type="button">
+                      <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
+                      {% render 'icon-minus' %}
+                    </button>
+                    <input class="quantity__input"
+                           type="number"
+                           name="quantity"
+                           id="Quantity-{{ section.id }}"
+                           min="1"
+                           value="1"
+                           form="{{ product_form_id }}"
+                           >
+                    <button class="quantity__button no-js-hidden" name="plus" type="button">
+                      <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title | escape }}</span>
+                      {% render 'icon-plus' %}
+                    </button>
+                  </quantity-input>
+                  
+   
+                {% if settings.display_short_description %}
+                <div class="top-description">
+                  {%- if product.metafields.meta.excerpt -%}
+                  {{ product.metafields.meta.excerpt | strip }}
+                  {%-else-%}
+                  {{ product.description | strip_html | truncatewords: 30 }}
+                  {%-endif-%}
+                </div>
+                {% endif %}
+
+                
+              </div>
+                <form id="add-item-form" method="post" action="/cart/add">
+
+                  <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+
+                  <input type="hidden" min="1" id="quantity-{{ product.id }}" name="quantity" value="1"/>
+
+
+                  <button type="submit" 
+                          name="add" 
+                          aria-label="Add to cart" 
+                          class=" btn--secondary-accent add-to-cart" 
+                          id="add_to_cart" 
+                          aria-haspopup="dialog" data-add-to-cart="">
+                    Add to cart
+                  </button>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+
+  $(document).ready(function($) {
+    
+    setTimeout(function(){
+      $(".quickview-scroll").nanoScroller();
+    },300); 
+    
+    //wishlist app
+    if(typeof GPWApp !== 'undefined'){
+      GPWApp.UpdateDOM();
+    }
+    //compare app
+    if(typeof GPCApp !== 'undefined'){
+      GPCApp.UpdateDOM();
+    }
+    
+  });
+  
+  $(window).resize(function() {
+    setTimeout(function () {
+      $(".nano").nanoScroller();
+    }, 500);
+  });
+
+  $(window).load(function() {
+     $(".nano").nanoScroller();
+  });
+</script>
+<script>
+  var selectCallback = function(variant, selector) {
+    
+    var featured_image_id = null;
+    if(variant.featured_image) {
+      featured_image_id = variant.featured_image.id;
+      $('.product-quickview').addClass('featured_image').removeClass('not_featured_image');
+    }else{
+      featured_image_id = null;
+      $('.product-quickview').addClass('not_featured_image').removeClass('featured_image');
+    }
+    if( $('.product-quickview').hasClass('featured_image')) {
+      console.log(featured_image_id);
+      $('.product-quickview .image-thumb').find(' img[data-image-id="'+featured_image_id+'"]').trigger('click');
+    }
+    
+ };
+   
+
+</script>
+{% if product %}
+<script id="gpo-quickview-item-{{product.id}}">
+  try {
+    var scriptTag = document.querySelector('#gpo-quickview-item-{{product.id}}');
+    var form = scriptTag && scriptTag.parentNode.querySelector('form[action*="/cart/add"]:not([hidden])');
+    var product = {{ product | json }};
+    product.collections = {{ product.collections | map: 'id' | json }};
+    Globo && Globo.Options && Globo.Options.init && Globo.Options.init(product, form);
+  }
+  catch(err) {}
+</script>
+{% endif %}
+
+<!-- GPO installed -->

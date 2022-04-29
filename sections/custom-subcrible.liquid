@@ -1,0 +1,119 @@
+<div class="subcrible pb-100">
+    <div class="grid wide_1320 pd-12">
+      
+      <div class="sub__background">
+        
+        <div class="sub__content">
+          {% for block in section.blocks %}
+        {%case block.type%}
+          {%when 'heading'%}
+          <h2>{{block.settings.subcrible_heading}}</h2>
+          {%when 'text'%}
+          <p>{{block.settings.subcrible_sub}}</p>
+          <form class="sub__form">
+            {%when 'input'%}
+            <input type="email" placeholder="{{block.settings.subcrible_input}}" class="sub__input">
+            {%when 'buttons'%}
+            <button type="submit" class="sub__btn">
+              <i class="far fa-paper-plane"></i>
+              {{block.settings.subcrible_btn}}
+            </button>
+          </form>
+          {%endcase%}
+        {%endfor%}
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
+
+{% schema %}
+  {
+    "name": "Custom Subcrible",
+    "settings": [
+	
+    ],
+    "blocks": [
+      {
+        "type": "heading",
+        "name": "Heading",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "subcrible_heading",
+            "default": "Sign up now & get 10% off",
+            "label": "t:sections.image-banner.blocks.heading.settings.heading.label"
+          }
+        ]
+      },
+  	{
+        "type": "text",
+        "name": "Text",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "subcrible_sub",
+            "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "label": "t:sections.image-banner.blocks.text.settings.text.label"
+          }
+        ]
+      },
+      {
+        "type": "input",
+        "name": "Input",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "subcrible_input",
+            "default": "Enter your email address",
+            "label": "t:sections.image-banner.blocks.heading.settings.heading.label"
+          }
+        ]
+      },
+      {
+        "type": "buttons",
+        "name": "Button",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "subcrible_btn",
+            "default": "SUBCRIBLE NOW",
+            "label": "t:sections.image-banner.blocks.heading.settings.heading.label"
+          }
+        ]
+      }
+    ],
+	"presets":[
+		{
+          "name": "t:sections.image-banner.presets.name",
+          "blocks": [
+            {
+                "type": "heading"
+            },
+            {
+                "type": "text"
+            },
+            {
+                "type": "input"
+            },
+            {
+                "type": "buttons"
+            }
+
+          ]
+    	}
+	]
+
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

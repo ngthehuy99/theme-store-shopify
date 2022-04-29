@@ -1,0 +1,479 @@
+{{ 'owl.carousel.min.css' | asset_url | stylesheet_tag }}
+{{ 'owl.theme.default.min.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'owl.carousel.min.js' | asset_url }}" defer="defer"></script>
+
+<div class="products-area pb-100">
+  <div class="grid wide_1320 pd-12">
+    <div class="row">
+      <div class="slider__unset owl-carousel owl-theme">
+		{%for block in section.blocks%}
+        <div class="products__slide-item item">
+          <a href="" class="d-block">
+            <img src="https://res.cloudinary.com/dbbfi0kuz/image/upload/v1624426726/products3_00c795c71b.jpg" alt="">
+          </a>
+          <ul class="products__btn">
+            <li>
+              <button type="button">
+                <i class="fas fa-search-plus"></i>
+                <span class="products__btn-label">Quick View</span>
+              </button>
+            </li>
+            <li>
+              <a href="">
+                <i class="fas fa-exchange-alt"></i>
+                <span class="products__btn-label">Compare</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <i class="far fa-heart"></i>
+                <span class="products__btn-label">Add to Wishlist</span>
+              </a>
+            </li>
+          </ul>
+          <span class="out-stock">Out of Stock</span>
+          <div class="products-item__content">
+            <h3><a> Trendy woman black blazer </a></h3>
+            <button class="add-to-cart">
+              Add to cart
+              <i class="cart-btn fas fa-cart-plus"></i>
+            </button>
+            <div class="products-item__price">
+              <span class="price-old">$241.99</span>
+              <span class="price-new">$200.99</span>
+            </div>
+          </div>
+
+        </div>
+        {%endfor%}
+        {%comment%}
+        <div class="products__slide-item item">
+          <a href="" class="d-block">
+            <img src="https://res.cloudinary.com/dbbfi0kuz/image/upload/v1624426734/products8_2d14d4c4fb.jpg" alt="">
+          </a>
+          <ul class="products__btn">
+            <li>
+              <button type="button">
+                <i class="fas fa-search-plus"></i>
+                <span class="products__btn-label">Quick View</span>
+              </button>
+            </li>
+            <li>
+              <a href="">
+                <i class="fas fa-exchange-alt"></i>
+                <span class="products__btn-label">Compare</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <i class="far fa-heart"></i>
+                <span class="products__btn-label">Add to Wishlist</span>
+              </a>
+            </li>
+          </ul>
+          <div class="products-item__content">
+            <h3><a> Straight-fit stretch golf pant </a></h3>
+            <button class="add-to-cart">
+              Add to cart
+              <i class="cart-btn fas fa-cart-plus"></i>
+            </button>
+            <div class="products-item__price">
+              <span class="price-new">$150.66</span>
+            </div>
+          </div>
+
+        </div>
+        <div class="products__slide-item item">
+          <a href="" class="d-block">
+            <img src="https://res.cloudinary.com/dbbfi0kuz/image/upload/v1634792255/products2_2952ef594e.jpg" alt="">
+          </a>
+          <ul class="products__btn">
+            <li>
+              <button type="button">
+                <i class="fas fa-search-plus"></i>
+                <span class="products__btn-label">Quick View</span>
+              </button>
+            </li>
+            <li>
+              <a href="">
+                <i class="fas fa-exchange-alt"></i>
+                <span class="products__btn-label">Compare</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <i class="far fa-heart"></i>
+                <span class="products__btn-label">Add to Wishlist</span>
+              </a>
+            </li>
+          </ul>
+          <div class="products-item__content">
+            <h3><a> Comfort man black hoodie </a></h3>
+            <button class="add-to-cart">
+              Add to cart
+              <i class="cart-btn fas fa-cart-plus"></i>
+            </button>
+            <div class="products-item__price">
+              <span class="price-new">$150.99</span>
+            </div>
+          </div>
+
+        </div>
+        <div class="products__slide-item item">
+          <a href="" class="d-block">
+            <img src="https://res.cloudinary.com/dbbfi0kuz/image/upload/v1634792204/products7_b19aad45c5.jpg" alt="">
+          </a>
+          <ul class="products__btn">
+            <li>
+              <button type="button">
+                <i class="fas fa-search-plus"></i>
+                <span class="products__btn-label">Quick View</span>
+              </button>
+            </li>
+            <li>
+              <a href="">
+                <i class="fas fa-exchange-alt"></i>
+                <span class="products__btn-label">Compare</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <i class="far fa-heart"></i>
+                <span class="products__btn-label">Add to Wishlist</span>
+              </a>
+            </li>
+          </ul>
+          <span class="sale"> SALE </span>
+          <div class="products-item__content">
+            <h3><a> Long-sleeve dress shirt </a></h3>
+            <button class="add-to-cart">
+              Add to cart
+              <i class="cart-btn fas fa-cart-plus"></i>
+            </button>
+            <div class="products-item__price">
+              <span class="price-old">$200.99</span>
+              <span class="price-new">$299.99</span>
+            </div>
+          </div>
+
+        </div>
+        <div class="products__slide-item item">
+          <a href="" class="d-block">
+            <img src="https://res.cloudinary.com/dbbfi0kuz/image/upload/v1624426749/products19_8667753059.jpg" alt="">
+          </a>
+          <ul class="products__btn">
+            <li>
+              <button type="button">
+                <i class="fas fa-search-plus"></i>
+                <span class="products__btn-label">Quick View</span>
+              </button>
+            </li>
+            <li>
+              <a href="">
+                <i class="fas fa-exchange-alt"></i>
+                <span class="products__btn-label">Compare</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <i class="far fa-heart"></i>
+                <span class="products__btn-label">Add to Wishlist</span>
+              </a>
+            </li>
+          </ul>
+          <span class="hot">HOT</span>
+          <div class="products-item__content">
+            <h3><a> Ripple junction play station </a></h3>
+            <button class="add-to-cart">
+              Add to cart
+              <i class="cart-btn fas fa-cart-plus"></i>
+            </button>
+            <div class="products-item__price">
+              <span class="price-new">$541.33</span>
+            </div>
+          </div>
+
+        </div>
+        <div class="products__slide-item item">
+          <a href="" class="d-block">
+            <img src="https://res.cloudinary.com/dbbfi0kuz/image/upload/v1624426733/products6_b4cfd168ab.jpg" alt="">
+          </a>
+          <ul class="products__btn">
+            <li>
+              <button type="button">
+                <i class="fas fa-search-plus"></i>
+                <span class="products__btn-label">Quick View</span>
+              </button>
+            </li>
+            <li>
+              <a href="">
+                <i class="fas fa-exchange-alt"></i>
+                <span class="products__btn-label">Compare</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <i class="far fa-heart"></i>
+                <span class="products__btn-label">Add to Wishlist</span>
+              </a>
+            </li>
+          </ul>
+          <div class="products-item__content">
+            <h3><a> Pullover ecosmart hooded </a></h3>
+            <button class="add-to-cart">
+              Add to cart
+              <i class="cart-btn fas fa-cart-plus"></i>
+            </button>
+            <div class="products-item__price">
+              <span class="price-old">$21.99</span>
+              <span class="price-new">$399.99</span>
+            </div>
+          </div>
+
+        </div>
+        <div class="products__slide-item item">
+          <a href="" class="d-block">
+            <img src="https://res.cloudinary.com/dbbfi0kuz/image/upload/v1624426742/products15_f2cef6bc6a.jpg" alt="">
+          </a>
+          <ul class="products__btn">
+            <li>
+              <button type="button">
+                <i class="fas fa-search-plus"></i>
+                <span class="products__btn-label">Quick View</span>
+              </button>
+            </li>
+            <li>
+              <a href="">
+                <i class="fas fa-exchange-alt"></i>
+                <span class="products__btn-label">Compare</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <i class="far fa-heart"></i>
+                <span class="products__btn-label">Add to Wishlist</span>
+              </a>
+            </li>
+          </ul>
+          <div class="products-item__content">
+            <h3><a> Reebok boys' active hoodie </a></h3>
+            <button class="add-to-cart">
+              Add to cart
+              <i class="cart-btn fas fa-cart-plus"></i>
+            </button>
+            <div class="products-item__price">
+              <span class="price-new">$154.33</span>
+            </div>
+          </div>
+
+        </div>
+        <div class="products__slide-item item">
+          <a href="" class="d-block">
+            <img src="https://res.cloudinary.com/dbbfi0kuz/image/upload/v1634792096/products1_daf35ac82c.jpg" alt="">
+          </a>
+          <ul class="products__btn">
+            <li>
+              <button type="button">
+                <i class="fas fa-search-plus"></i>
+                <span class="products__btn-label">Quick View</span>
+              </button>
+            </li>
+            <li>
+              <a href="">
+                <i class="fas fa-exchange-alt"></i>
+                <span class="products__btn-label">Compare</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <i class="far fa-heart"></i>
+                <span class="products__btn-label">Add to Wishlist</span>
+              </a>
+            </li>
+          </ul>
+          <span class="sale"> SALE </span>
+          <div class="products-item__content">
+            <h3><a> Cheeky woman leather jacket </a></h3>
+            <button class="add-to-cart">
+              Add to cart
+              <i class="cart-btn fas fa-cart-plus"></i>
+            </button>
+            <div class="products-item__price">
+              <span class="price-new">$199.99</span>
+            </div>
+          </div>
+
+        </div>
+        <div class="products__slide-item item">
+          <a href="" class="d-block">
+            <img src="https://res.cloudinary.com/dbbfi0kuz/image/upload/v1624426746/products16_821b576936.jpg" alt="">
+          </a>
+          <ul class="products__btn">
+            <li>
+              <button type="button">
+                <i class="fas fa-search-plus"></i>
+                <span class="products__btn-label">Quick View</span>
+              </button>
+            </li>
+            <li>
+              <a href="">
+                <i class="fas fa-exchange-alt"></i>
+                <span class="products__btn-label">Compare</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <i class="far fa-heart"></i>
+                <span class="products__btn-label">Add to Wishlist</span>
+              </a>
+            </li>
+          </ul>
+          <div class="products-item__content">
+            <h3><a> Nintendo men's pixel cast </a></h3>
+            <button class="add-to-cart">
+              Add to cart
+              <i class="cart-btn fas fa-cart-plus"></i>
+            </button>
+            <div class="products-item__price">
+              <span class="price-old">$59.99</span>
+              <span class="price-new">$50.99</span>
+            </div>
+          </div>
+
+        </div>
+        <div class="products__slide-item item">
+          <a href="" class="d-block">
+            <img src="https://res.cloudinary.com/dbbfi0kuz/image/upload/v1634791939/products4_8938c8d764.jpg" alt="">
+          </a>
+          <ul class="products__btn">
+            <li>
+              <button type="button">
+                <i class="fas fa-search-plus"></i>
+                <span class="products__btn-label">Quick View</span>
+              </button>
+            </li>
+            <li>
+              <a href="">
+                <i class="fas fa-exchange-alt"></i>
+                <span class="products__btn-label">Compare</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <i class="far fa-heart"></i>
+                <span class="products__btn-label">Add to Wishlist</span>
+              </a>
+            </li>
+          </ul>
+          <span class="hot"> HOT </span>
+          <div class="products-item__content">
+            <h3><a> Arctix womens essential </a></h3>
+            <button class="add-to-cart">
+              Add to cart
+              <i class="cart-btn fas fa-cart-plus"></i>
+            </button>
+            <div class="products-item__price">
+              <span class="price-new">$289.99</span>
+            </div>
+          </div>
+
+        </div>
+        <div class="products__slide-item item">
+          <a href="" class="d-block">
+            <img src="https://res.cloudinary.com/dbbfi0kuz/image/upload/v1634792156/products5_9d526e4d49.jpg" alt="">
+          </a>
+          <ul class="products__btn">
+            <li>
+              <button type="button">
+                <i class="fas fa-search-plus"></i>
+                <span class="products__btn-label">Quick View</span>
+              </button>
+            </li>
+            <li>
+              <a href="">
+                <i class="fas fa-exchange-alt"></i>
+                <span class="products__btn-label">Compare</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <i class="far fa-heart"></i>
+                <span class="products__btn-label">Add to Wishlist</span>
+              </a>
+            </li>
+          </ul>
+          <div class="products-item__content">
+            <h3><a> Mesh lined snowboard </a></h3>
+            <button class="add-to-cart">
+              Add to cart
+              <i class="cart-btn fas fa-cart-plus"></i>
+            </button>
+            <div class="products-item__price">
+              <span class="price-new">$158.99</span>
+            </div>
+          </div>
+
+        </div>
+		{%endcomment%}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  $( document ).ready(function() {
+    $('.owl-carousel').owlCarousel({
+      loop:false,
+      margin:15,
+      nav:true,
+      navText:["<i class='btn-nav fas fa-angle-left'></i>","<i class='btn-nav fas fa-angle-right'></i>"],
+      dots:false,
+      responsive:{
+        0:{
+          items:1
+        },
+        600:{
+          items:2
+        },
+        1000:{
+          items:3
+        }
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+"name": "Custom Products",
+"settings": [
+{
+"id": "custom_text_title",
+"type": "text",
+"label": "Text box heading",
+"default": "Title"
+},
+{
+"id": "custom_text_body",
+"type": "richtext",
+"label": "Add custom text below",
+"default": "<p>Add your text here</p>"
+}
+],
+"presets": [
+{
+"name": "Custom Products",
+"category": "Custom"
+}
+]
+
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+
+{% endjavascript %}

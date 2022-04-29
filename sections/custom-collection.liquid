@@ -1,0 +1,115 @@
+<div class="item-area pt-100 pb-70">
+  <div class="container collection grid wide_1320">
+    <div class="row justify-center">
+     {%for block in section.blocks %}
+      {%if block.settings.collection_image != blank%}
+        
+      <div class="col l-4 m-6 c-12">
+        <div class="collection-item ">
+          <img 
+               srcset="{%- if block.settings.collection_image.width >= 165 -%}{{ block.settings.collection_image | img_url: '165x' }} 165w,{%- endif -%}
+                       {%- if block.settings.collection_image.width >= 330 -%}{{ block.settings.collection_image | img_url: '330x' }} 330w,{%- endif -%}
+                       {%- if block.settings.collection_image.width >= 535 -%}{{ block.settings.collection_image | img_url: '535x' }} 535w,{%- endif -%}
+                       {%- if block.settings.collection_image.width >= 750 -%}{{ block.settings.collection_image | img_url: '750x' }} 750w,{%- endif -%}
+                       {%- if block.settings.collection_image.width >= 1000 -%}{{ block.settings.collection_image | img_url: '1000x' }} 1000w,{%- endif -%}
+                       {%- if block.settings.collection_image.width >= 1500 -%}{{ block.settings.collection_image | img_url: '1500x' }} 1500w,{%- endif -%}
+                       {%- if block.settings.collection_image.width >= 3000 -%}{{ block.settings.collection_image | img_url: '3000x' }} 3000w,{%- endif -%}
+                       {{ block.settings.collection_image | img_url: 'master' }} {{ block.settings.collection_image.width }}w"
+               src="{{block.settings.collection_image | img_url}}"
+               >
+          <div class="collection-content">
+            {%if block.settings.collection_title != blank%}
+            <h3>
+              {{block.settings.collection_title}}
+              <span>{{block.settings.collection_quantity}}</span>
+            </h3>
+            {%endif%}
+          </div>
+          <a class="btn-link" href=""></a>
+        </div>        
+      </div>
+      {%endif%}
+      {%endfor%}
+      {%comment%}
+      <div class="col l-4 m-6 c-12">
+        <div class="collection-item ">
+          <img src="
+                    {%- if section.settings.collection_image2 != blank -%}
+                    {{section.settings.collection_image2| img_url}}
+                    {%else%}
+                    https://vaxim-ng.envytheme.com/assets/img/collection/collection2.jpg
+                    {%- endif -%}"
+               >
+          <div class="collection-content">
+            <h3>
+              {{section.settings.collection_title2}}
+              <span>{{section.settings.collection_quantity2}} Items</span>
+            </h3>
+          </div>
+          <a class="btn-link" href=""></a>
+        </div>
+      </div>
+      <div class="col l-4 m-6 c-12">
+        <div class="collection-item ">
+          <img src="
+                    {%- if section.settings.collection_image3 != blank -%}
+                    {{section.settings.collection_image3| img_url}}
+                    {%else%}
+                    https://vaxim-ng.envytheme.com/assets/img/collection/collection3.jpg
+                    {%- endif -%}"
+               >
+          <div class="collection-content">
+            <h3>
+              {{section.settings.collection_title3}}
+              <span>{{section.settings.collection_quantity3}} Items</span>
+            </h3>
+          </div>
+          <a class="btn-link" href=""></a>
+
+        </div>				
+      </div>
+      {%endcomment%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Collection",
+  "settings": [
+	
+    
+  ],
+	"blocks": [
+      {
+        "type": "custom_collection",
+        "name": "Collection list",
+	
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "collection_image",
+            "label": "Collection image"
+          },   
+          {
+              "type":"text",
+              "id": "collection_title",
+              "label":"Collection title"
+          },
+		{
+              "type":"text",
+              "id": "collection_quantity",
+              "label":"Collection quantity"
+          }
+      	]
+      }
+	]
+
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

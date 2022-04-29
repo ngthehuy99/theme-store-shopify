@@ -1,0 +1,108 @@
+  <div class="feedback__area pt-100 pb-70">
+    <div class="grid wide_1320">
+      {%if section.settings.feedback_title != blank%}
+      <div class="products__title mobile-display">
+        <h2><span>{{section.settings.feedback_title}}</span></h2>
+      </div>
+      {%endif%}
+      <div class="feedback row justify-center">
+        {%for block in section.blocks%}
+        <div class="col l-4 m-6 c-12">
+          <div class="feedback-item">
+            {% if block.settings.feedback_content != blank %}
+            <p>{{block.settings.feedback_content}}</p>
+            <h3>{{block.settings.feedback_content-author}}
+              <span>- {{block.settings.feedback_content-author-job}}</span>
+            </h3>
+            {%endif%}
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+        </div>
+        {%endfor%}
+        {%comment%}
+        <div class="col l-4 m-6 c-12">
+          <div class="feedback-item">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Minim veniam, quis nostrud ullamco laboris nisi ut aliquip ex ea commodo consequat consectetur adipiscing.</p>
+            <h3>David Conway
+              <span>- Developer</span>
+            </h3>
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col l-4 m-6 c-12">
+          <div class="feedback-item">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Minim veniam, quis nostrud ullamco laboris nisi ut aliquip ex ea commodo consequat consectetur adipiscing.</p>
+            <h3>Joe Root
+              <span>- Designer</span>
+            </h3>
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+        </div>
+        {%endcomment%}
+      </div>
+    </div>
+  </div>
+
+{% schema %}
+  {
+    "name": "Custom Feedback",
+    "settings": [
+		{
+        	"type":"text",
+			"id":"feedback_title",
+			"label":"Title",
+			"default":"Trusted Customer Feedback"
+		}
+    ],
+	"blocks":[
+		{
+			"type": "custom_feedback",
+            "name": "Feedback",
+            "settings": [
+              {
+                "type": "text",
+                "id": "feedback_content",
+                "label": "Feedback"
+              },   
+              {
+                  "type":"text",
+                  "id": "feedback_content-author",
+                  "label":"Author"
+              },
+			{
+                  "type":"text",
+                  "id": "feedback_content-author-job",
+                  "label":"Job"
+              }
+			
+            
+            ]
+		}
+	]
+
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
